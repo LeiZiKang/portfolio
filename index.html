@@ -192,6 +192,21 @@ h2 {
 }
 .card .actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 4px 16px; font: 14px/1.5 var(--mono); }
 
+/* ---------- ship log ---------- */
+ol.shiplog { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+ol.shiplog li { position: relative; padding: 0 0 16px 22px; }
+ol.shiplog li:last-child { padding-bottom: 2px; }
+ol.shiplog li::before {
+  content: ""; position: absolute; left: -7px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--bg);
+}
+ol.shiplog li.old::before { background: var(--muted); }
+ol.shiplog time { display: block; font: 12.5px/1.5 var(--mono); color: var(--muted); }
+ol.shiplog .what { font-size: 15.5px; line-height: 1.5; }
+ol.shiplog .what b { font-weight: 600; }
+ol.shiplog .what span { color: var(--muted); }
+
 /* ---------- client work ---------- */
 .group-title { font-size: 15px; font-weight: 600; margin: 28px 0 10px; }
 .group-title:first-of-type { margin-top: 4px; }
@@ -259,12 +274,27 @@ footer p { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0 0
   </div>
 
   <nav class="links" aria-label="Sections">
+    <a href="#shiplog">Ship log</a>
     <a href="#apps">Shipped apps</a>
     <a href="#client-work">Client work</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
+
+<!-- ======================= SHIP LOG ======================= -->
+<!-- Source: iTunes Lookup API (releaseDate / version / currentVersionReleaseDate), 2026-10-19. Dates are App Store release dates (Pacific). Update when a new version ships. -->
+<section id="shiplog">
+  <h2>Ship log</h2>
+  <p class="section-note">Mac App Store launches, newest first. Four of the five shipped between Sep 8 and Oct 15, 2026.</p>
+  <ol class="shiplog">
+    <li><time datetime="2026-10-15">Oct 15, 2026</time><div class="what"><b>MindNotes – Quick Capture 1.0</b> <span>· new app · floating quick-capture notes</span></div></li>
+    <li><time datetime="2026-09-11">Sep 11, 2026</time><div class="what"><b>Voltyn 2.0</b> <span>· new app · power and battery monitor with a desktop widget</span></div></li>
+    <li><time datetime="2026-09-11">Sep 11, 2026</time><div class="what"><b>Glasswitch</b> <span>· new app · default-browser switcher, 1.1 followed Sep 12</span></div></li>
+    <li><time datetime="2026-09-08">Sep 8, 2026</time><div class="what"><b>UTC Time Looker 1.0</b> <span>· new app · one-click UTC timestamp converter</span></div></li>
+    <li class="old"><time datetime="2025-11-25">Nov 25, 2025</time><div class="what"><b>Codex Session Viewer 1.0</b> <span>· new app · GUI for browsing Codex / Claude Code sessions</span></div></li>
+  </ol>
+</section>
 
 <!-- ======================= SHIPPED APPS ======================= -->
 <section id="apps">
