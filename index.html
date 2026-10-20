@@ -442,19 +442,56 @@ footer p { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0 0
 </section>
 
 <!-- ======================= WRITING ======================= -->
-<!-- Source: levi-blog.pages.dev (posts published 2026-10-19). Only technical posts are linked here. -->
+<!-- Source: levi-blog.pages.dev, English versions (all 9 return 200 as of 2026-10-20). Only technical posts are linked here. -->
 <section id="writing">
   <h2>Writing</h2>
-  <p class="section-note">Engineering notes from my own projects.</p>
+  <p class="section-note">Engineering notes from client work and my own projects.</p>
+  <h3 class="group-title">iOS / Mobile</h3>
+  <article class="work">
+    <h3><a href="https://levi-blog.pages.dev/blog/api-mock-kit-en/" rel="noopener">Building the Screens Before the Backend Is Ready: an API Mock Kit on URLProtocol</a></h3>
+    <div class="meta">URLProtocol · UIKit</div>
+    <p class="also">Intercept requests at the network layer and return local JSON per route, with switchable loading, 401, 500 and timeout states, so screens could ship before the backend.</p>
+  </article>
+  <article class="work">
+    <h3><a href="https://levi-blog.pages.dev/blog/cocoapods-spm-rollback-en/" rel="noopener">Migrating an Old Project from CocoaPods to SPM, and Then Back Again</a></h3>
+    <div class="meta">SPM · CocoaPods</div>
+    <p class="also">Moving an old UIKit project's dependencies to Swift Package Manager, and why we rolled a thousand-file change back.</p>
+  </article>
+  <article class="work">
+    <h3><a href="https://levi-blog.pages.dev/blog/webview-pdf-download-en/" rel="noopener">Adding a Download-and-Share Button to PDFs in WKWebView</a></h3>
+    <div class="meta">WKWebView · protocol extensions</div>
+    <p class="also">A protocol with a default implementation gave every web view screen a PDF download and share button in a few dozen lines.</p>
+  </article>
   <article class="work">
     <h3><a href="https://levi-blog.pages.dev/blog/swiftlint-tooling/" rel="noopener">Making SwiftLint Output Actionable: Context Enrichment and a Parallel Parser</a></h3>
     <div class="meta">Swift CLI · TaskGroup</div>
-    <p class="also">A small Swift CLI that attaches the enclosing type and function to each lint finding and parses files in parallel, turning thousands of warnings into a triage list.</p>
+    <p class="also">A small Swift CLI that attaches the enclosing type and function to each lint finding and parses files in parallel.</p>
   </article>
   <article class="work">
     <h3><a href="https://levi-blog.pages.dev/blog/swizzling-duplicate-taps/" rel="noopener">Stopping Duplicate Button Taps Globally with Method Swizzling</a></h3>
     <div class="meta">UIKit · Objective-C runtime</div>
-    <p class="also">One runtime hook on UIControl's action dispatch makes every button in an app tap-safe, with a working implementation and the trade-offs.</p>
+    <p class="also">One runtime hook on UIControl's action dispatch makes every button tap-safe, with the trade-offs.</p>
+  </article>
+  <article class="work">
+    <h3><a href="https://levi-blog.pages.dev/blog/alert-queue-en/" rel="noopener">When Two Alerts Want the Screen at Once: Presenting Them Through a Queue</a></h3>
+    <div class="meta">UIKit · Swift Package</div>
+    <p class="also">A first-in, first-out queue that shows the next alert only after the previous one closes, pulled out into a small Swift package.</p>
+  </article>
+  <h3 class="group-title">Backend / Infrastructure</h3>
+  <article class="work">
+    <h3><a href="https://levi-blog.pages.dev/blog/fcm-topic-push-en/" rel="noopener">Moving Member Push Notifications to FCM Topics: Groups, Languages and the Ones That Never Arrived</a></h3>
+    <div class="meta">Node.js · FCM</div>
+    <p class="also">Moving a membership app's push from per-token sends to FCM topics: fixed and one-time topics, language splits, and reconciling subscriptions.</p>
+  </article>
+  <article class="work">
+    <h3><a href="https://levi-blog.pages.dev/blog/azure-redis-nat-en/" rel="noopener">When a Service Can't Reach Redis: VNet Integration Changed the Outbound IP</a></h3>
+    <div class="meta">Azure · Redis · networking</div>
+    <p class="also">Debugging a push service that lost Redis after VNet integration routed outbound traffic through a NAT gateway.</p>
+  </article>
+  <article class="work">
+    <h3><a href="https://levi-blog.pages.dev/blog/jmeter-load-test-en/" rel="noopener">Load-Testing a Membership API Before Release: Scripts, Parameters and Reading the Errors</a></h3>
+    <div class="meta">JMeter · Node.js</div>
+    <p class="also">One parameterised JMeter plan for smoke, load and stress runs against a Node.js membership API, and tracing every error back to its cause.</p>
   </article>
 </section>
 
