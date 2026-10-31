@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Levi Lei — iOS and full-stack TypeScript engineer</title>
+<meta name="description" content="Levi Lei (雷子康): iOS engineer (Swift, UIKit, SwiftUI) and full-stack TypeScript developer. Five Mac apps on the Mac App Store, client work for Hong Kong banking, retail and event platforms. Looking for roles in Shanghai.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Levi Lei — iOS and full-stack TypeScript engineer">
+<meta property="og:description" content="Five Mac apps on the Mac App Store, plus client iOS and TypeScript full-stack work for Hong Kong banking, retail and event platforms.">
+<meta property="og:url" content="https://leizikang.github.io/portfolio/">
+<meta property="og:image" content="https://leizikang.github.io/portfolio/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="canonical" href="https://leizikang.github.io/portfolio/">
+<style>
+:root {
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --surface-2: #f2f3f1;
+  --text: #17191c;
+  --text-2: #3d424a;
+  --muted: #646a73;
+  --line: #e4e5e2;
+  --line-strong: #d3d5d1;
+  --accent: #0b57d0;
+  --accent-soft: #e8effc;
+  --chip-bg: #f1f2f0;
+  --nav-bg: rgba(247, 247, 245, 0.82);
+  --shadow: 0 1px 2px rgba(20, 22, 26, 0.04), 0 4px 16px rgba(20, 22, 26, 0.04);
+  --img-filter: none;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, "PingFang SC", "Noto Sans CJK SC", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1013;
+    --surface: #16191d;
+    --surface-2: #1b1f24;
+    --text: #eceef1;
+    --text-2: #c3c8cf;
+    --muted: #949ba6;
+    --line: #262a30;
+    --line-strong: #343941;
+    --accent: #85adff;
+    --accent-soft: #1a2436;
+    --chip-bg: #1f2329;
+    --nav-bg: rgba(14, 16, 19, 0.8);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --img-filter: brightness(0.9);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1013;
+  --surface: #16191d;
+  --surface-2: #1b1f24;
+  --text: #eceef1;
+  --text-2: #c3c8cf;
+  --muted: #949ba6;
+  --line: #262a30;
+  --line-strong: #343941;
+  --accent: #85adff;
+  --accent-soft: #1a2436;
+  --chip-bg: #1f2329;
+  --nav-bg: rgba(14, 16, 19, 0.8);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --img-filter: brightness(0.9);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.65 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+.mono { font-family: var(--mono); }
+
+/* ---------- sticky section nav ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--nav-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+nav.links {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 12px;
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  font: 500 14px/1 var(--sans);
+}
+nav.links::-webkit-scrollbar { display: none; }
+nav.links a {
+  flex: none;
+  color: var(--muted);
+  padding: 15px 10px 13px;
+  border-bottom: 2px solid transparent;
+}
+nav.links a:hover { color: var(--text); text-decoration: none; }
+nav.links a[aria-current="true"] { color: var(--text); border-bottom-color: var(--accent); }
+section[id] { scroll-margin-top: 56px; }
+
+/* ---------- header ---------- */
+header { padding: 64px 0 8px; }
+.eyebrow {
+  display: inline-block;
+  font: 500 13px/1.4 var(--sans);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin: 0 0 20px;
+}
+h1 {
+  font: 700 clamp(36px, 7vw, 54px)/1.08 var(--display);
+  letter-spacing: -0.03em;
+  margin: 0 0 10px;
+}
+.zh { color: var(--muted); font-size: 18px; font-weight: 400; margin: 0 0 22px; }
+.lede { font-size: 19px; line-height: 1.6; color: var(--text-2); margin: 0 0 32px; max-width: 60ch; }
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 12px;
+  margin: 0;
+}
+.facts > div {
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.facts b { display: block; font: 650 21px/1.25 var(--display); letter-spacing: -0.015em; }
+.facts span { display: block; font-size: 14px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+/* ---------- sections ---------- */
+section { padding: 72px 0 0; }
+h2 {
+  font: 680 28px/1.2 var(--display);
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+.section-note { color: var(--muted); font-size: 16px; line-height: 1.6; margin: 0 0 28px; max-width: 72ch; }
+
+/* ---------- ship log ---------- */
+ol.shiplog {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+ol.shiplog li {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  gap: 4px 16px;
+  align-items: baseline;
+  padding: 13px 22px 13px 44px;
+  position: relative;
+}
+ol.shiplog li + li { border-top: 1px solid var(--line); }
+ol.shiplog li::before {
+  content: ""; position: absolute; left: 22px; top: 21px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+ol.shiplog li.old::before { background: var(--muted); box-shadow: 0 0 0 4px var(--chip-bg); }
+ol.shiplog time { font: 500 13.5px/1.5 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+ol.shiplog .what { font-size: 15.5px; line-height: 1.55; }
+ol.shiplog .what b { font-weight: 600; }
+ol.shiplog .what span { color: var(--muted); }
+@media (max-width: 560px) {
+  ol.shiplog li { grid-template-columns: 1fr; gap: 2px; padding: 14px 18px 14px 40px; }
+  ol.shiplog li::before { left: 18px; top: 21px; }
+}
+
+/* ---------- app cards ---------- */
+.apps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 20px;
+}
+.card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 12px 12px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+.card > :not(.shot-img) { margin-left: 10px; margin-right: 10px; }
+.shot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  filter: var(--img-filter);
+  margin: 0 0 18px;
+}
+.card h3 { font: 650 21px/1.25 var(--display); margin: 0; letter-spacing: -0.015em; }
+.meta { font-size: 13.5px; line-height: 1.5; color: var(--muted); margin: 4px 0 14px; }
+.card p { margin: 0 0 12px; font-size: 15.5px; line-height: 1.6; }
+.card p.small { font-size: 14.5px; color: var(--muted); }
+.chips { list-style: none; margin: 4px 0 18px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li {
+  font: 500 12.5px/1.4 var(--sans);
+  color: var(--text-2);
+  background: var(--chip-bg);
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+.card .actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; font: 500 14px/1 var(--sans); }
+.card .actions a {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--text);
+}
+.card .actions a:first-child { background: var(--text); border-color: var(--text); color: var(--bg); }
+.card .actions a:hover { text-decoration: none; border-color: var(--accent); }
+.card .actions a:first-child:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+/* An odd last card spans the full row, screenshot beside the text. */
+@media (min-width: 760px) {
+  .apps > .card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto auto 1fr;
+    column-gap: 14px;
+    align-content: start;
+  }
+  .apps > .card:last-child:nth-child(odd) > .shot-img { grid-column: 1; grid-row: 1 / -1; margin: 0; align-self: start; }
+  .apps > .card:last-child:nth-child(odd) > :not(.shot-img) { grid-column: 2; }
+  .apps > .card:last-child:nth-child(odd) > h3 { margin-top: 8px; }
+  .apps > .card:last-child:nth-child(odd) > .actions { align-self: end; }
+}
+
+/* ---------- client work ---------- */
+.group-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 600 15px/1.4 var(--sans);
+  color: var(--text-2);
+  margin: 36px 0 14px;
+}
+.group-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.section-note + .group-title { margin-top: 0; }
+.work {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin: 0 0 14px;
+  box-shadow: var(--shadow);
+}
+.work h3 { font: 650 19px/1.35 var(--display); letter-spacing: -0.01em; margin: 0; }
+.work .meta { margin-bottom: 14px; }
+.work ul { margin: 0; padding-left: 18px; max-width: 78ch; }
+.work li { font-size: 15.5px; line-height: 1.65; margin: 0 0 8px; color: var(--text-2); }
+.work li:last-child { margin-bottom: 0; }
+.work li::marker { color: var(--line-strong); }
+.also { font-size: 14.5px; color: var(--muted); margin: 14px 0 0; padding-top: 14px; border-top: 1px dashed var(--line); }
+@media (max-width: 560px) {
+  .work { padding: 18px; }
+}
+
+/* ---------- writing ---------- */
+.posts {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.post { padding: 16px 22px 17px; }
+.post + .post { border-top: 1px solid var(--line); }
+.post h3 { font: 600 16.5px/1.4 var(--sans); margin: 0; letter-spacing: -0.005em; }
+.post h3 a { color: var(--text); }
+.post h3 a::after { content: " ↗"; color: var(--muted); font-weight: 400; }
+.post h3 a:hover { color: var(--accent); text-decoration: none; }
+.post h3 a:hover::after { color: var(--accent); }
+.post .meta { font-size: 13px; margin: 2px 0 4px; color: var(--muted); }
+.post p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); max-width: 80ch; }
+@media (max-width: 560px) {
+  .post { padding: 14px 16px 15px; }
+}
+
+/* ---------- skills ---------- */
+dl.skills {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+dl.skills dt, dl.skills dd { padding: 15px 22px; border-top: 1px solid var(--line); }
+dl.skills dt:first-of-type, dl.skills dt:first-of-type + dd { border-top: 0; }
+dl.skills dt { font: 600 14px/1.65 var(--sans); color: var(--text); padding-right: 0; }
+dl.skills dd { margin: 0; font-size: 15px; line-height: 1.65; color: var(--text-2); }
+@media (max-width: 560px) {
+  dl.skills { grid-template-columns: 1fr; }
+  dl.skills dt { padding: 14px 18px 0; }
+  dl.skills dd { border-top: 0; padding: 2px 18px 14px; }
+}
+
+/* ---------- contact / footer ---------- */
+ul.contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 12px;
+}
+ul.contact li {
+  position: relative;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  font-size: 16px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+ul.contact li:hover { border-color: var(--accent); }
+ul.contact .k { display: block; font: 500 13px/1.6 var(--sans); color: var(--muted); }
+ul.contact a::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
+ul.contact a:focus-visible { outline: 0; }
+ul.contact a:focus-visible::after { outline: 2px solid var(--accent); outline-offset: 2px; }
+footer { padding: 28px 0 64px; margin-top: 72px; border-top: 1px solid var(--line); }
+footer p { font-size: 14px; line-height: 1.6; color: var(--muted); margin: 0 0 8px; max-width: 72ch; }
+
+@media (max-width: 560px) {
+  header { padding-top: 40px; }
+  section { padding-top: 56px; }
+  h2 { font-size: 25px; }
+  .lede { font-size: 17.5px; }
+  .facts { gap: 8px; }
+  .facts > div { padding: 13px 16px; }
+  .facts b { font-size: 18px; }
+  .facts span { margin-top: 3px; }
+}
+
+/* Terminal hero, status dot and scroll reveal (same motif as the GitHub profile header). */
+.terminal { margin: 0 0 30px; background: #0d1117; border: 1px solid #30363d; border-radius: 14px; overflow: hidden; color: #e6edf3; font: 15px/1.6 var(--mono); box-shadow: 0 10px 34px rgba(13, 17, 23, 0.2); }
+.terminal-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px 0; }
+.terminal-bar i { width: 11px; height: 11px; border-radius: 50%; }
+.terminal-bar i:nth-child(1) { background: #ff5f57; }
+.terminal-bar i:nth-child(2) { background: #febc2e; }
+.terminal-bar i:nth-child(3) { background: #28c840; }
+.terminal-bar span { flex: 1; text-align: center; color: #6e7681; font-size: 12.5px; padding-right: 47px; }
+.terminal-body { padding: 18px 24px 24px; }
+.terminal-body p { margin: 0; }
+.term-cmd { display: flex; }
+.term-cmd b { color: #6ee7a8; font-weight: 400; white-space: pre; }
+.term-cmd span { display: inline-block; overflow: hidden; white-space: nowrap; width: 0; animation: term-type 0.8s steps(12) forwards; }
+.term-out { color: #9aa7b4; margin-bottom: 14px !important; opacity: 0; animation: term-in 0.35s ease forwards; }
+.term-motto { font-size: clamp(21px, 4.4vw, 31px); line-height: 1.3; font-weight: 700; opacity: 0; background: linear-gradient(90deg, #7cc4ff, #b48cff, #ff8ab8, #7cc4ff) 0 0 / 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: term-in 0.5s ease 3s forwards, term-flow 8s linear 3s infinite; }
+.term-cursor { display: inline-block; width: 0.55em; height: 1em; margin-left: 6px; vertical-align: -0.12em; background: #e6edf3; animation: term-blink 1s steps(1) infinite; -webkit-text-fill-color: initial; }
+.t1 span { --w: 6ch; animation-delay: 0.3s; }
+.t1 + .term-out { animation-delay: 1.15s; }
+.t2 span { --w: 11ch; animation-delay: 1.6s; }
+@keyframes term-type { to { width: var(--w); } }
+@keyframes term-in { to { opacity: 1; } }
+@keyframes term-flow { to { background-position: -300% 0; } }
+@keyframes term-blink { 50% { opacity: 0; } }
+.status { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px; padding: 4px 12px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: 13.5px; color: var(--text-2); }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: #2ea043; animation: status-pulse 2s ease-out infinite; }
+@keyframes status-pulse { 0% { box-shadow: 0 0 0 0 rgba(46, 160, 67, 0.55); } 100% { box-shadow: 0 0 0 9px rgba(46, 160, 67, 0); } }
+.stack { display: flex; flex-wrap: wrap; gap: 7px; margin: 22px 0 0; padding: 0; list-style: none; }
+.stack li { padding: 3px 10px; border-radius: 6px; color: #fff; font-size: 12.5px; font-weight: 600; transition: transform 0.15s ease; }
+.stack li:hover { transform: translateY(-2px); }
+.card, .work, .post, .facts > div { transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease; }
+.card:hover, .work:hover, .post:hover, .facts > div:hover { transform: translateY(-2px); border-color: var(--line-strong); }
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+.tooling { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.tooling li { padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; color: var(--text-2); }
+.tooling a { font-weight: 600; }
+@media (prefers-reduced-motion: reduce) {
+  .terminal *, .status i, .card, .work, .post, .facts > div, .stack li { animation: none !important; transition: none !important; }
+  .term-cmd span { width: auto; }
+  .term-out, .term-motto { opacity: 1; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
+@media (max-width: 560px) {
+  .terminal { font-size: 13.5px; }
+  .terminal-body { padding: 14px 16px 18px; }
+}
+
+@media print {
+  .js .reveal { opacity: 1 !important; transform: none !important; }
+  .terminal { display: none; }
+  .topbar { display: none; }
+  body { background: #fff; color: #000; }
+  .card, .work, .facts > div, .post { break-inside: avoid; box-shadow: none; }
+}
+
+/* Local bilingual portfolio layout. No remote assets or dependencies. */
+.wrap, .topbar-inner { max-width: 1200px; }
+.topbar { position: fixed; width: 100%; }
+body { padding-top: 100px; }
+.topbar-inner { margin: auto; display: flex; flex-wrap: wrap; align-items: center; padding: 0 20px; gap: 0 16px; }
+nav.links { flex: 1 1 660px; min-width: 0; padding: 0; margin: 0; flex-wrap: wrap; overflow: visible; font-size: 13px; }
+nav.links a { padding: 14px 8px; }
+.top-actions { display: flex; gap: 8px; align-items: center; margin: 7px 0 7px auto; white-space: nowrap; }
+.top-actions a, .top-actions button, .hero-actions a { font: 600 13px/1.4 var(--sans); padding: 9px 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--text); }
+.top-actions a:first-child, .hero-actions a:first-child { background: var(--text); color: var(--bg); }
+.top-actions button { cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.hero-grid { display: grid; gap: 32px; align-items: center; margin-bottom: 32px; }
+.hero-grid > * { min-width: 0; }
+.hero-copy h1 { margin-bottom: 18px; }
+.hero-copy .zh { margin-bottom: 14px; }
+.hero-copy .eyebrow { margin-bottom: 12px; }
+.hero-copy .lede { margin-bottom: 20px; font-size: 18px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.terminal { margin: 0; }
+.term-out { overflow-wrap: anywhere; }
+.term-motto { font-size: clamp(23px, 2.6vw, 31px); }
+.facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.apps { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+.card { padding: 16px 16px 24px; }
+.shot-img { object-fit: contain; }
+@media (min-width: 760px) {
+ .apps > .card:last-child:nth-child(odd) { display: flex; }
+ .apps > .card:last-child:nth-child(odd) > .shot-img { margin: 0 0 18px; }
+}
+@media (min-width: 900px) {
+ .hero-grid { grid-template-columns: 1fr 1fr; }
+ .topbar-inner { flex-wrap: nowrap; }
+ nav.links { flex-basis: auto; }
+ body { padding-top: 52px; }
+}
+section[id], #push-service { scroll-margin-top: 115px; }
+.push-flow { margin: 24px 0 0; padding: 16px 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; }
+.push-flow svg { display: block; width: 100%; height: auto; }
+.flow-vertical { display: none !important; }
+.flow-line { fill: none; stroke: var(--accent); stroke-width: 2; }
+.retry-line { stroke-dasharray: 5 5; }
+.flow-node { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; }
+.flow-label { fill: var(--text); text-anchor: middle; font: 600 12px var(--sans); }
+.flow-note { fill: var(--text-2); text-anchor: middle; font: 12px var(--sans); }
+.delivery-dot { fill: var(--accent); animation: delivery 2.5s linear infinite; }
+@keyframes delivery { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+.push-flow figcaption { margin: 8px 8px 0; font-size: 13px; color: var(--muted); }
+@media (max-width: 899px) {
+ .flow-horizontal { display: none !important; }
+ .flow-vertical { display: block !important; max-width: 350px; margin: auto; }
+}
+@media (max-width: 560px) {
+ .topbar-inner { padding: 0 12px; }
+ nav.links { flex-basis: 100%; gap: 0; font-size: 12px; }
+ nav.links a { padding: 9px 6px; }
+ .top-actions { margin-top: 2px; }
+ .top-actions a, .top-actions button { padding: 7px 10px; }
+ .facts { grid-template-columns: 1fr; }
+ header { padding-top: 28px; }
+ .card { padding: 8px 8px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+ .term-cmd span { width: auto; }
+ .term-out, .term-motto, .js .reveal { opacity: 1 !important; transform: none !important; }
+}
+@media print {
+ :root, :root:not([data-theme="light"]), :root[data-theme] { --bg:#fff; --surface:#fff; --surface-2:#fff; --text:#000; --text-2:#222; --muted:#444; --line:#ccc; --line-strong:#999; --accent:#17458a; --img-filter:none; }
+ body { padding-top: 0; }
+ *, *::before, *::after { animation: none !important; transition: none !important; }
+ .hero-grid { display: block; }
+ .hero-actions { display: none; }
+ .js .reveal { opacity: 1 !important; transform: none !important; }
+ .flow-horizontal { display: block !important; }
+ .flow-vertical { display: none !important; }
+ .push-flow { break-inside: avoid; }
+}
+
+@media (min-width: 561px) { ol.shiplog li { grid-template-columns: 175px 1fr; } }
+ol.shiplog time { white-space: nowrap; }
+@media (max-width: 899px) {
+  nav.links { flex-wrap: nowrap; overflow-x: auto; min-width: 0; }
+  nav.links a { white-space: nowrap; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<div class="topbar-inner">
+<nav class="links" aria-label="Sections" data-aria-label-en="Sections" data-aria-label-zh="页面章节">
+  <a href="#shiplog" data-en="Ship log" data-zh="Ship log">Ship log</a>
+  <a href="#apps" data-en="Shipped apps" data-zh="Shipped apps">Shipped apps</a>
+  <a href="#client-work" data-en="Client work" data-zh="Client work">Client work</a>
+  <a href="#tooling" data-en="Tooling" data-zh="Tooling">Tooling</a>
+  <a href="#writing" data-en="Writing" data-zh="Writing">Writing</a>
+  <a href="#skills" data-en="Skills" data-zh="Skills">Skills</a>
+  <a href="#contact" data-en="Contact" data-zh="联系我">Contact</a>
+</nav>
+<div class="top-actions"><a href="mailto:levileiwork@outlook.com?subject=Resume%20request" data-en="Request résumé" data-zh="要简历">Request résumé</a><a href="mailto:levileiwork@outlook.com" data-en="Contact" data-zh="联系我">Contact</a><button id="language-toggle" type="button" hidden>中文</button></div>
+</div>
+</div>
+
+<div class="wrap">
+
+<header>
+  <div class="hero-grid"><div class="hero-copy">
+  <h1>Levi Lei</h1>
+  <p class="eyebrow" data-en="iOS · Full-stack TypeScript · Shanghai" data-zh="iOS · TypeScript 全栈 · 上海">iOS · Full-stack TypeScript · Shanghai</p>
+  <p class="zh">雷子康</p>
+  <p class="lede" data-en="I build native iOS and macOS apps in Swift, and the TypeScript services behind them. Three years of iOS. Two years of full-stack TypeScript. Five Mac apps on the Mac App Store. Looking for iOS or full-stack roles in Shanghai." data-zh="用 Swift 开发原生 iOS、macOS App，也用 TypeScript 开发背后的服务。3 年 iOS 开发，2 年 TypeScript 全栈，5 款 Mac App 已上架 Mac App Store。正在寻找上海的 iOS 或全栈岗位。">I build native iOS and macOS apps in Swift, and the TypeScript services behind them. Three years of iOS. Two years of full-stack TypeScript. Five Mac apps on the Mac App Store. Looking for iOS or full-stack roles in Shanghai.</p>
+
+  <p class="status"><i></i><span data-en="Open to new roles · Shanghai / Remote" data-zh="求职中 · 上海 / 远程">Open to new roles · Shanghai / Remote</span></p>
+  </div>
+  <div class="terminal" role="img" aria-label="Terminal: Levi Lei, iOS and full-stack TypeScript, 5 Mac apps on the App Store. Write the code. Change the world." data-aria-label-en="Terminal: Levi Lei, iOS and full-stack TypeScript, 5 Mac apps on the App Store. Write the code. Change the world." data-aria-label-zh="终端：Levi Lei，iOS 与 TypeScript 全栈，5 款 Mac App 已上架 App Store。Write the code. Change the world.">
+    <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>levi@shanghai — zsh</span></div>
+    <div class="terminal-body" aria-hidden="true">
+      <p class="term-cmd t1"><b>~ $ </b><span>whoami</span></p>
+      <p class="term-out" data-en="Levi Lei · iOS &amp; full-stack TypeScript · 5 Mac apps on the App Store" data-zh="Levi Lei · iOS &amp; full-stack TypeScript · 5 Mac apps on the App Store">Levi Lei · iOS &amp; full-stack TypeScript · 5 Mac apps on the App Store</p>
+      <p class="term-cmd t2"><b>~ $ </b><span>echo $MOTTO</span></p>
+      <p class="term-motto"><span data-en="Write the code. Change the world." data-zh="Write the code. Change the world.">Write the code. Change the world.</span><span class="term-cursor"></span></p>
+    </div>
+  </div>
+  </div>
+
+  <div class="facts">
+    <div>
+      <b data-en="5 Mac apps" data-zh="5 款 Mac App">5 Mac apps</b>
+      <span data-en="On the Mac App Store. SwiftUI, AppKit, WidgetKit, IOKit." data-zh="均已上架 Mac App Store。使用 SwiftUI、AppKit、WidgetKit、IOKit。">On the Mac App Store. SwiftUI, AppKit, WidgetKit, IOKit.</span>
+    </div>
+    <div>
+      <b data-en="3 yrs iOS" data-zh="3 年 iOS">3 yrs iOS</b>
+      <span data-en="Swift, UIKit, SwiftUI, Swift Concurrency. Banking and retail apps, large mixed Swift / Objective-C codebases." data-zh="Swift、UIKit、SwiftUI、Swift Concurrency。参与银行与零售 App，以及大型 Swift / Objective-C 混编项目。">Swift, UIKit, SwiftUI, Swift Concurrency. Banking and retail apps, large mixed Swift / Objective-C codebases.</span>
+    </div>
+    <div>
+      <b data-en="2 yrs TypeScript" data-zh="2 年 TypeScript">2 yrs TypeScript</b>
+      <span data-en="Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ." data-zh="3 个已上线客户项目，使用 Next.js、Node.js、Prisma、PostgreSQL 和 Redis / BullMQ。">Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ.</span>
+    </div>
+  </div>
+
+  <ul class="stack" aria-label="Main stack" data-aria-label-en="Main stack" data-aria-label-zh="主要技术栈">
+    <li style="background:#d9480f">Swift</li>
+    <li style="background:#0a6ed1">SwiftUI</li>
+    <li style="background:#1f6fc4">UIKit</li>
+    <li style="background:#3178c6">TypeScript</li>
+    <li style="background:#2f7d32">Node.js</li>
+    <li style="background:#24292f">Next.js</li>
+    <li style="background:#b4540a">Cloudflare</li>
+    <li style="background:#1a66c4">GitHub Actions</li>
+    <li style="background:#b4552f">Claude Code</li>
+  </ul>
+
+</header>
+
+<!-- ======================= SHIP LOG ======================= -->
+<section id="shiplog">
+  <h2 data-en="Ship log" data-zh="Ship log">Ship log</h2>
+  <p class="section-note" data-en="Mac App Store launches, newest first. Four of the five shipped between Sep 8 and Oct 15, 2026." data-zh="按时间倒序排列的 Mac App Store 上线记录。5 款中有 4 款在 2026 年 9 月 8 日至 10 月 15 日上线。">Mac App Store launches, newest first. Four of the five shipped between Sep 8 and Oct 15, 2026.</p>
+  <ol class="shiplog">
+    <li><time datetime="2026-10-15" data-en="Oct 15, 2026" data-zh="2026 年 10 月 15 日">Oct 15, 2026</time><div class="what"><b>MindNotes – Quick Capture 1.0</b> <span data-en="· new app · floating quick-capture notes" data-zh="· 新 App · 悬浮速记">· new app · floating quick-capture notes</span></div></li>
+    <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026 年 9 月 11 日">Sep 11, 2026</time><div class="what"><b>Voltyn 2.0</b> <span data-en="· new app · power and battery monitor with a desktop widget" data-zh="· 新 App · 功耗与电池监测，附桌面小组件">· new app · power and battery monitor with a desktop widget</span></div></li>
+    <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026 年 9 月 11 日">Sep 11, 2026</time><div class="what"><b>Glasswitch</b> <span data-en="· new app · default-browser switcher, 1.1 followed Sep 12" data-zh="· 新 App · 默认浏览器切换，9 月 12 日更新至 1.1">· new app · default-browser switcher, 1.1 followed Sep 12</span></div></li>
+    <li><time datetime="2026-09-08" data-en="Sep 8, 2026" data-zh="2026 年 9 月 8 日">Sep 8, 2026</time><div class="what"><b>UTC Time Looker 1.0</b> <span data-en="· new app · one-click UTC timestamp converter" data-zh="· 新 App · 一键转换 UTC 时间戳">· new app · one-click UTC timestamp converter</span></div></li>
+    <li class="old"><time datetime="2025-11-25" data-en="Nov 25, 2025" data-zh="2025 年 11 月 25 日">Nov 25, 2025</time><div class="what"><b>Codex Session Viewer 1.0</b> <span data-en="· new app · GUI for browsing Codex / Claude Code sessions" data-zh="· 新 App · 图形界面浏览 Codex / Claude Code 会话">· new app · GUI for browsing Codex / Claude Code sessions</span></div></li>
+  </ol>
+</section>
+
+<!-- ======================= SHIPPED APPS ======================= -->
+<section id="apps">
+  <h2 data-en="Shipped apps" data-zh="Shipped apps">Shipped apps</h2>
+  <p class="section-note" data-en="Five Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). All five are live on the Mac App Store. Glasswitch and Voltyn build on open-source code, credited on their cards." data-zh="使用 Claude Code、Codex 等 AI 编程工具，独立开发并维护 5 款 Mac App，均已上架 Mac App Store。Glasswitch 和 Voltyn 基于开源代码，来源见各自卡片。">Five Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). All five are live on the Mac App Store. Glasswitch and Voltyn build on open-source code, credited on their cards.</p>
+
+  <div class="apps">
+
+    <article class="card">
+      <img class="shot-img" src="assets/voltyn.jpg" alt="Voltyn screenshot from the Mac App Store listing" data-alt-en="Voltyn screenshot from the Mac App Store listing" data-alt-zh="Voltyn 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <h3>Voltyn</h3>
+      <div class="meta" data-en="v2.0 · macOS 14+ · Apple Silicon MacBooks · paid" data-zh="v2.0 · macOS 14+ · Apple Silicon MacBook · 付费">v2.0 · macOS 14+ · Apple Silicon MacBooks · paid</div>
+      <p data-en="Menu bar power monitor. Live system power with a 60-second trend, power flow, battery health and charging details, local history, and a desktop widget." data-zh="菜单栏功耗监测工具。展示实时系统功耗、60 秒趋势、供电流向、电池健康与充电信息，支持本地历史记录和桌面小组件。">Menu bar power monitor. Live system power with a 60-second trend, power flow, battery health and charging details, local history, and a desktop widget.</p>
+      <p class="small" data-en="Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app." data-zh="通过 IOKit 读取电池与电源数据，用 SQLite 保存历史，通过 App Group 向 WidgetKit 扩展传递快照。无需账号，无遥测。IOKit 读取层源自 MIT 许可的 PowerTop，已在 App 内注明。">Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app.</p>
+      <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
+        <li>SwiftUI</li><li>AppKit</li><li>IOKit</li><li>WidgetKit</li><li>SQLite</li>
+      </ul>
+      <div class="actions">
+        <a href="https://apps.apple.com/app/id6804302267" rel="noopener">App Store →</a>
+        <a href="https://leizikang.github.io/voltyn-site/en/" rel="noopener" data-en="Website →" data-zh="Website →">Website →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="shot-img" src="assets/glasswitch.jpg" alt="Glasswitch screenshot from the Mac App Store listing" data-alt-en="Glasswitch screenshot from the Mac App Store listing" data-alt-zh="Glasswitch 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <h3>Glasswitch</h3>
+      <div class="meta" data-en="v1.1 · macOS 26+ · paid" data-zh="v1.1 · macOS 26+ · 付费">v1.1 · macOS 26+ · paid</div>
+      <p data-en="Shows your Mac&#x27;s default browser in the menu bar and switches the system HTTP / HTTPS handler to any installed browser. Stays in sync when the default is changed elsewhere." data-zh="在菜单栏显示 Mac 的默认浏览器，可将系统 HTTP / HTTPS 处理程序切换为任意已安装的浏览器。在其他地方更改默认浏览器后，也会保持同步。">Shows your Mac's default browser in the menu bar and switches the system HTTP / HTTPS handler to any installed browser. Stays in sync when the default is changed elsewhere.</p>
+      <p class="small"><span data-en="Built on the open-source" data-zh="基于开源项目">Built on the open-source</span> <a href="https://github.com/congbo/default-browser-switcher" rel="noopener">default-browser-switcher</a> <span data-en="(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site." data-zh="（MIT）。我负责的改动包括：macOS 26 Liquid Glass 界面、仅使用公开 NSWorkspace API 的沙盒版、中英双语界面、后台同步系统默认浏览器，以及 App Store 上架、官网与支持站点。">(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site.</span></p>
+      <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
+        <li>SwiftUI</li><li>AppKit</li><li>NSWorkspace</li><li>App Sandbox</li><li>SMAppService</li><li>Combine</li>
+      </ul>
+      <div class="actions">
+        <a href="https://apps.apple.com/app/id6809678536" rel="noopener">App Store →</a>
+        <a href="https://leizikang.github.io/" rel="noopener" data-en="Website →" data-zh="Website →">Website →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="shot-img" src="assets/codex-viewer.jpg" alt="Codex Session Viewer screenshot from the Mac App Store listing" data-alt-en="Codex Session Viewer screenshot from the Mac App Store listing" data-alt-zh="Codex Session Viewer 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <h3>Codex Session Viewer</h3>
+      <div class="meta" data-en="v1.0 · macOS 26+ · free" data-zh="v1.0 · macOS 26+ · 免费">v1.0 · macOS 26+ · free</div>
+      <p data-en="Browses local Codex CLI session logs. Built in 2025, when Codex was CLI-only: it finds and parses the JSONL session archives, groups them by month and renders the full conversation timeline." data-zh="浏览本地 Codex CLI 会话日志。开发于 2025 年，当时 Codex 还只有 CLI：自动查找并解析 JSONL 会话文件，按月分组，呈现完整对话时间线。">Browses local Codex CLI session logs. Built in 2025, when Codex was CLI-only: it finds and parses the JSONL session archives, groups them by month and renders the full conversation timeline.</p>
+      <p class="small" data-en="Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public." data-zh="首次授权文件夹后保存 security-scoped bookmarks，无需重复授权。源码公开。">Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public.</p>
+      <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
+        <li>SwiftUI</li><li data-en="JSONL parsing" data-zh="JSONL parsing">JSONL parsing</li><li data-en="Security-scoped bookmarks" data-zh="Security-scoped bookmarks">Security-scoped bookmarks</li>
+      </ul>
+      <div class="actions">
+        <a href="https://apps.apple.com/app/id6755619332" rel="noopener">App Store →</a>
+        <a href="https://github.com/LeiZiKang/CodexSessionViewer" rel="noopener" data-en="Source →" data-zh="Source →">Source →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="shot-img" src="assets/utc-time-looker.jpg" alt="UTC Time Looker screenshot from the Mac App Store listing" data-alt-en="UTC Time Looker screenshot from the Mac App Store listing" data-alt-zh="UTC Time Looker 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <h3>UTC Time Looker</h3>
+      <div class="meta" data-en="v1.0 · macOS 15.5+ · paid" data-zh="v1.0 · macOS 15.5+ · 付费">v1.0 · macOS 15.5+ · paid</div>
+      <p data-en="Converts UTC dates, ISO 8601 strings and Unix timestamps into local and other time zones as you type. I wrote it for reading UTC times in backend logs." data-zh="输入 UTC 日期、ISO 8601 字符串或 Unix 时间戳，即时转换为本地及其他时区时间。最初是为方便阅读后端日志里的 UTC 时间而写。">Converts UTC dates, ISO 8601 strings and Unix timestamps into local and other time zones as you type. I wrote it for reading UTC times in backend logs.</p>
+      <p class="small" data-en="SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT)." data-zh="SwiftUI 界面，Foundation 解析器。仓库包含解析、夏令时和 UTC 偏移的单元测试。以 MIT 许可开源。">SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT).</p>
+      <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
+        <li>SwiftUI</li><li>Foundation</li><li data-en="Unit tests" data-zh="Unit tests">Unit tests</li>
+      </ul>
+      <div class="actions">
+        <a href="https://apps.apple.com/app/id6755833650" rel="noopener">App Store →</a>
+        <a href="https://github.com/LeiZiKang/UTCTimeLooker" rel="noopener" data-en="Source →" data-zh="Source →">Source →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="shot-img" src="assets/mindnotes.jpg" alt="MindNotes screenshot from the Mac App Store listing" data-alt-en="MindNotes screenshot from the Mac App Store listing" data-alt-zh="MindNotes 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <h3>MindNotes</h3>
+      <div class="meta" data-en="v1.0 · macOS 15+ · free · released Oct 2026" data-zh="v1.0 · macOS 15+ · 免费 · 2026 年 10 月上线">v1.0 · macOS 15+ · free · released Oct 2026</div>
+      <p data-en="A floating quick-capture button for the Mac: open it, write a thought, save, and get back to work. Drafts are kept automatically; saved notes can be searched, edited and copied." data-zh="Mac 上的悬浮速记按钮：打开、记下想法、保存，继续工作。自动保留草稿，已保存的笔记支持搜索、编辑与复制。">A floating quick-capture button for the Mac: open it, write a thought, save, and get back to work. Drafts are kept automatically; saved notes can be searched, edited and copied.</p>
+      <p class="small" data-en="Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection." data-zh="笔记以纯 Markdown 文件保存在本地，可在 Finder 中查看。支持英文与简体中文、浅色 / 深色 / 跟随系统外观，以及可选的登录时启动。无需账号，不联网，不收集数据。">Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection.</p>
+      <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
+        <li>SwiftUI</li><li>AppKit</li><li data-en="Markdown files" data-zh="Markdown 文件">Markdown files</li>
+      </ul>
+      <div class="actions">
+        <a href="https://apps.apple.com/app/id6819075811" rel="noopener">App Store →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ======================= CLIENT WORK ======================= -->
+<section id="client-work">
+  <h2 data-en="Client work" data-zh="Client work">Client work</h2>
+  <p class="section-note" data-en="At ESD Services Limited, delivering for Hong Kong clients with two to three projects in parallel. Clients are not named and no client code or screenshots are shown." data-zh="在 ESD Services Limited 为香港客户交付项目，同时推进 2 至 3 个项目。不公开客户名称，也不展示客户代码或截图。">At ESD Services Limited, delivering for Hong Kong clients with two to three projects in parallel. Clients are not named and no client code or screenshots are shown.</p>
+
+  <h3 class="group-title" data-en="Native iOS" data-zh="Native iOS">Native iOS</h3>
+
+  <article class="work">
+    <h3 data-en="Retail commerce app" data-zh="零售电商 App">Retail commerce app</h3>
+    <div class="meta" data-en="iOS Developer · UIKit, MVVM, RxSwift" data-zh="iOS 开发 · UIKit、MVVM、RxSwift">iOS Developer · UIKit, MVVM, RxSwift</div>
+    <ul>
+      <li data-en="One of the primary iOS developers on a long-lived codebase: product detail, cart, checkout, payment handoff and order history." data-zh="长期迭代代码库的主要 iOS 开发之一，负责商品详情、购物车、结账、支付跳转和订单历史。">One of the primary iOS developers on a long-lived codebase: product detail, cart, checkout, payment handoff and order history.</li>
+      <li data-en="Handled the commerce edge cases that only show up in production: items that become invalid, inventory changes mid-session, coupon validation, zero-total checkout, recovery from cancelled payments." data-zh="处理线上电商边界情况：商品失效、会话中库存变化、优惠券校验、零元结账，以及取消支付后的恢复。">Handled the commerce edge cases that only show up in production: items that become invalid, inventory changes mid-session, coupon validation, zero-total checkout, recovery from cancelled payments.</li>
+      <li data-en="Extracted local Swift Packages in a CocoaPods codebase: a queue for competing alerts, and a wrapper for notification permissions and settings deep-links. The client later brought me back for a second phase." data-zh="在 CocoaPods 项目中抽出本地 Swift Packages：用队列协调多个弹窗，并封装通知权限和设置页跳转。后来客户再次邀请我参与第二阶段。">Extracted local Swift Packages in a CocoaPods codebase: a queue for competing alerts, and a wrapper for notification permissions and settings deep-links. The client later brought me back for a second phase.</li>
+    </ul>
+  </article>
+
+  <article class="work">
+    <h3 data-en="Mobile banking app" data-zh="手机银行 App">Mobile banking app</h3>
+    <div class="meta" data-en="iOS Developer · short project · Swift, Objective-C, SwiftSyntax" data-zh="iOS 开发 · 短期项目 · Swift、Objective-C、SwiftSyntax">iOS Developer · short project · Swift, Objective-C, SwiftSyntax</div>
+    <ul>
+      <li data-en="Built a reusable WKWebView PDF download-and-share component for a large mixed Swift / Objective-C codebase, extracted as a Swift Package usable from both languages." data-zh="为大型 Swift / Objective-C 混编项目开发可复用的 WKWebView PDF 下载分享组件，抽成两种语言均可调用的 Swift Package。">Built a reusable WKWebView PDF download-and-share component for a large mixed Swift / Objective-C codebase, extracted as a Swift Package usable from both languages.</li>
+      <li data-en="Added configurable app-wide duplicate-tap prevention through the Objective-C runtime." data-zh="通过 Objective-C runtime 加入可配置的全局防重复点击。">Added configurable app-wide duplicate-tap prevention through the Objective-C runtime.</li>
+      <li data-en="Wrote static-analysis tooling with a Swift CLI and SwiftSyntax to turn code findings into a triageable report." data-zh="用 Swift CLI 和 SwiftSyntax 编写静态分析工具，把代码问题整理成可分级处理的报告。">Wrote static-analysis tooling with a Swift CLI and SwiftSyntax to turn code findings into a triageable report.</li>
+    </ul>
+  </article>
+
+  <h3 class="group-title" data-en="Full-stack TypeScript" data-zh="Full-stack TypeScript">Full-stack TypeScript</h3>
+
+  <article class="work" id="push-service">
+    <h3 data-en="E-commerce backend and push service" data-zh="电商后端与推送服务">E-commerce backend and push service</h3>
+    <div class="meta" data-en="Backend Developer · TypeScript, Express, Prisma, PostgreSQL, BullMQ / Redis" data-zh="后端开发 · TypeScript、Express、Prisma、PostgreSQL、BullMQ / Redis">Backend Developer · TypeScript, Express, Prisma, PostgreSQL, BullMQ / Redis</div>
+    <ul>
+      <li data-en="Primary developer of the App and CMS APIs: members, messaging, e-coupons and reporting." data-zh="App 与 CMS API 的主要开发，涵盖会员、消息、电子优惠券和报表。">Primary developer of the App and CMS APIs: members, messaging, e-coupons and reporting.</li>
+      <li data-en="Sole developer of the push-notification service, using BullMQ / Redis for asynchronous delivery, retries, event auditing and language-aware topic subscriptions." data-zh="独立开发推送服务，使用 BullMQ / Redis 实现异步投递、重试、事件审计和多语言主题订阅。">Sole developer of the push-notification service, using BullMQ / Redis for asynchronous delivery, retries, event auditing and language-aware topic subscriptions.</li>
+      <li data-en="Designed and ran JMeter smoke, load, stress and soak suites to find the breaking point before release. Also batch data flows and Docker / Azure multi-environment deployment." data-zh="设计并运行 JMeter 冒烟、负载、压力和稳定性测试，在发布前探测瓶颈。还负责批处理数据流和 Docker / Azure 多环境部署。">Designed and ran JMeter smoke, load, stress and soak suites to find the breaking point before release. Also batch data flows and Docker / Azure multi-environment deployment.</li>
+    </ul>
+    <figure class="push-flow"><svg class="flow-horizontal" viewBox="0 0 836 240" role="img" aria-label="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-en="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-zh="推送投递流程：App / CMS → Express API → BullMQ 与 Redis 队列 → Push worker → Push providers → Devices；失败后重试回到队列。">
+<defs><marker id="arrow-flow-horizontal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="var(--accent)"/></marker></defs>
+<path class="flow-line" d="M126 70 L150 70" marker-end="url(#arrow-flow-horizontal)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M126 70 L150 70');animation-delay:-0.0s"/>
+<path class="flow-line" d="M266 70 L290 70" marker-end="url(#arrow-flow-horizontal)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M266 70 L290 70');animation-delay:-0.5s"/>
+<path class="flow-line" d="M406 70 L430 70" marker-end="url(#arrow-flow-horizontal)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M406 70 L430 70');animation-delay:-1.0s"/>
+<path class="flow-line" d="M546 70 L570 70" marker-end="url(#arrow-flow-horizontal)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M546 70 L570 70');animation-delay:-1.5s"/>
+<path class="flow-line" d="M686 70 L710 70" marker-end="url(#arrow-flow-horizontal)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M686 70 L710 70');animation-delay:-2.0s"/>
+<rect class="flow-node" x="10" y="46" width="116" height="48" rx="10"/>
+<text class="flow-label" x="68" y="75">App / CMS</text>
+<rect class="flow-node" x="150" y="46" width="116" height="48" rx="10"/>
+<text class="flow-label" x="208" y="75">Express API</text>
+<rect class="flow-node" x="290" y="46" width="116" height="48" rx="10"/>
+<text class="flow-label" x="348" y="68">BullMQ + Redis</text>
+<text class="flow-note" x="348" y="85" data-en="Queue" data-zh="Queue">Queue</text>
+<rect class="flow-node" x="430" y="46" width="116" height="48" rx="10"/>
+<text class="flow-label" x="488" y="75" data-en="Push worker" data-zh="Push worker">Push worker</text>
+<rect class="flow-node" x="570" y="46" width="116" height="48" rx="10"/>
+<text class="flow-label" x="628" y="75">Push providers</text>
+<rect class="flow-node" x="710" y="46" width="116" height="48" rx="10"/>
+<text class="flow-label" x="768" y="75" data-en="Devices" data-zh="Devices">Devices</text>
+<path class="flow-line retry-line" d="M488 98 V144 H348 V98" marker-end="url(#arrow-flow-horizontal)"/>
+<text class="flow-note" x="418" y="168" data-en="Retry" data-zh="Retry">Retry</text>
+<text class="flow-note" x="278" y="211" data-en="Event auditing" data-zh="Event auditing">Event auditing</text>
+<text class="flow-note" x="602" y="211" data-en="Language-aware topic subscriptions" data-zh="多语言主题订阅">Language-aware topic subscriptions</text>
+</svg><svg class="flow-vertical" viewBox="0 0 320 570" role="img" aria-label="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-en="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-zh="推送投递流程：App / CMS → Express API → BullMQ 与 Redis 队列 → Push worker → Push providers → Devices；失败后重试回到队列。">
+<defs><marker id="arrow-flow-vertical" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="var(--accent)"/></marker></defs>
+<path class="flow-line" d="M100 68 L100 112" marker-end="url(#arrow-flow-vertical)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M100 68 L100 112');animation-delay:-0.0s"/>
+<path class="flow-line" d="M100 160 L100 204" marker-end="url(#arrow-flow-vertical)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M100 160 L100 204');animation-delay:-0.5s"/>
+<path class="flow-line" d="M100 252 L100 296" marker-end="url(#arrow-flow-vertical)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M100 252 L100 296');animation-delay:-1.0s"/>
+<path class="flow-line" d="M100 344 L100 388" marker-end="url(#arrow-flow-vertical)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M100 344 L100 388');animation-delay:-1.5s"/>
+<path class="flow-line" d="M100 436 L100 480" marker-end="url(#arrow-flow-vertical)"/>
+<circle class="delivery-dot" r="3.5" style="offset-path:path('M100 436 L100 480');animation-delay:-2.0s"/>
+<rect class="flow-node" x="42" y="20" width="116" height="48" rx="10"/>
+<text class="flow-label" x="100" y="49">App / CMS</text>
+<rect class="flow-node" x="42" y="112" width="116" height="48" rx="10"/>
+<text class="flow-label" x="100" y="141">Express API</text>
+<rect class="flow-node" x="42" y="204" width="116" height="48" rx="10"/>
+<text class="flow-label" x="100" y="226">BullMQ + Redis</text>
+<text class="flow-note" x="100" y="243" data-en="Queue" data-zh="Queue">Queue</text>
+<rect class="flow-node" x="42" y="296" width="116" height="48" rx="10"/>
+<text class="flow-label" x="100" y="325" data-en="Push worker" data-zh="Push worker">Push worker</text>
+<rect class="flow-node" x="42" y="388" width="116" height="48" rx="10"/>
+<text class="flow-label" x="100" y="417">Push providers</text>
+<rect class="flow-node" x="42" y="480" width="116" height="48" rx="10"/>
+<text class="flow-label" x="100" y="509" data-en="Devices" data-zh="Devices">Devices</text>
+<path class="flow-line retry-line" d="M158 320 H230 V228 H163" marker-end="url(#arrow-flow-vertical)"/>
+<text class="flow-note" x="249" y="277" data-en="Retry" data-zh="Retry">Retry</text>
+<text class="flow-note" x="100" y="549" data-en="Event auditing" data-zh="Event auditing">Event auditing</text>
+<text class="flow-note" x="210" y="389" data-en="Language-aware" data-zh="Language-aware">Language-aware</text>
+<text class="flow-note" x="210" y="410" data-en="topic subscriptions" data-zh="topic subscriptions">topic subscriptions</text>
+</svg><figcaption data-en="Generic push delivery schematic, not a production topology." data-zh="通用推送投递示意图，不代表任何生产环境拓扑。">Generic push delivery schematic, not a production topology.</figcaption></figure>
+  </article>
+
+  <article class="work">
+    <h3 data-en="Event registration platform" data-zh="活动报名平台">Event registration platform</h3>
+    <div class="meta" data-en="Full-stack Developer · Next.js, Express, Prisma, PostgreSQL" data-zh="全栈开发 · Next.js、Express、Prisma、PostgreSQL">Full-stack Developer · Next.js, Express, Prisma, PostgreSQL</div>
+    <ul>
+      <li data-en="Primary developer across a multilingual public site, an internal CMS and the APIs behind them." data-zh="主要开发多语言官网、内部 CMS 及后端 API。">Primary developer across a multilingual public site, an internal CMS and the APIs behind them.</li>
+      <li data-en="Individual and group registration, scheduling and capacity control, with online payments and deferred offline-payment confirmation." data-zh="实现个人与团体报名、排期和名额控制，接入在线支付和线下付款后确认流程。">Individual and group registration, scheduling and capacity control, with online payments and deferred offline-payment confirmation.</li>
+      <li data-en="Permission-aware event management, check-in, CSV export and rescheduling, with bot protection on the public entry points." data-zh="实现带权限控制的活动管理、签到、CSV 导出和改期，并为公开入口加入防机器人保护。">Permission-aware event management, check-in, CSV export and rescheduling, with bot protection on the public entry points.</li>
+    </ul>
+  </article>
+  <p class="also" data-en="Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects." data-zh="还参与酒店业务询价与 CMS 平台（Next.js、Express、Prisma），并为全栈项目搭建 Cloudflare 和 GitHub Actions 部署流水线。">Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects.</p>
+</section>
+
+<!-- ======================= WRITING ======================= -->
+<!-- ======================= AGENT TOOLING ======================= -->
+<section id="tooling">
+  <h2 data-en="Agent tooling" data-zh="Agent tooling">Agent tooling</h2>
+  <p class="section-note" data-en="Open-source tools from how I work with Claude Code and Codex every day." data-zh="来自日常使用 Claude Code 与 Codex 的开源工具。">Open-source tools from how I work with Claude Code and Codex every day.</p>
+  <ul class="tooling">
+    <li><a href="https://github.com/LeiZiKang/job-agent-kit">job-agent-kit</a> <span data-en="· Clone, open Claude Code, say &quot;set me up&quot;: an agent-driven job search." data-zh="· Clone 后打开 Claude Code，说「set me up」，开始由 Agent 协助求职。">· Clone, open Claude Code, say "set me up": an agent-driven job search.</span></li>
+    <li><a href="https://github.com/LeiZiKang/agent-memory">agent-memory</a> <span data-en="· Plain-file project memory shared by Claude Code and Codex." data-zh="· Claude Code 与 Codex 共享的纯文件项目记忆。">· Plain-file project memory shared by Claude Code and Codex.</span></li>
+    <li><a href="https://github.com/LeiZiKang/codex-delegate">codex-delegate</a> <span data-en="· Claude directs, Codex executes, Claude reviews." data-zh="· Claude 指挥，Codex 执行，Claude 审查。">· Claude directs, Codex executes, Claude reviews.</span></li>
+    <li><a href="https://github.com/LeiZiKang/clawd-usage-weather">clawd-usage-weather</a> <span data-en="· A hopping Clawd and a usage forecast above your prompt." data-zh="· 在提示词上方显示跳动的 Clawd 和用量预测。">· A hopping Clawd and a usage forecast above your prompt.</span></li>
+  </ul>
+</section>
+
+<section id="writing">
+  <h2 data-en="Writing" data-zh="Writing">Writing</h2>
+  <p class="section-note" data-en="Engineering notes from client work and my own projects." data-zh="记录客户项目与个人项目中的工程实践。">Engineering notes from client work and my own projects.</p>
+  <h3 class="group-title" data-en="iOS / Mobile" data-zh="iOS / Mobile">iOS / Mobile</h3>
+  <div class="posts">
+  <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/api-mock-kit-en/" rel="noopener" data-en="Building the Screens Before the Backend Is Ready: an API Mock Kit on URLProtocol" data-zh="后端就绪前先做页面：基于 URLProtocol 的 API Mock Kit">Building the Screens Before the Backend Is Ready: an API Mock Kit on URLProtocol</a></h3>
+    <div class="meta">URLProtocol · UIKit</div>
+    <p data-en="Intercept requests at the network layer and return local JSON per route, with switchable loading, 401, 500 and timeout states, so screens could ship before the backend." data-zh="在网络层拦截请求，按路由返回本地 JSON，支持切换加载中、401、500 和超时状态，让页面开发先于后端推进。">Intercept requests at the network layer and return local JSON per route, with switchable loading, 401, 500 and timeout states, so screens could ship before the backend.</p>
+  </article>
+  <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/cocoapods-spm-rollback-en/" rel="noopener" data-en="Migrating an Old Project from CocoaPods to SPM, and Then Back Again" data-zh="老项目从 CocoaPods 迁到 SPM，又迁了回来">Migrating an Old Project from CocoaPods to SPM, and Then Back Again</a></h3>
+    <div class="meta">SPM · CocoaPods</div>
+    <p data-en="Moving an old UIKit project&#x27;s dependencies to Swift Package Manager, and why we rolled a thousand-file change back." data-zh="把老 UIKit 项目的依赖迁到 Swift Package Manager，以及为什么最终回滚了涉及上千文件的改动。">Moving an old UIKit project's dependencies to Swift Package Manager, and why we rolled a thousand-file change back.</p>
+  </article>
+  <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/webview-pdf-download-en/" rel="noopener" data-en="Adding a Download-and-Share Button to PDFs in WKWebView" data-zh="给 WKWebView 中的 PDF 加上下载分享按钮">Adding a Download-and-Share Button to PDFs in WKWebView</a></h3>
+    <div class="meta" data-en="WKWebView · protocol extensions" data-zh="WKWebView · protocol extensions">WKWebView · protocol extensions</div>
+    <p data-en="A protocol with a default implementation gave every web view screen a PDF download and share button in a few dozen lines." data-zh="通过带默认实现的 protocol，用几十行代码为各个 WebView 页面加入 PDF 下载分享按钮。">A protocol with a default implementation gave every web view screen a PDF download and share button in a few dozen lines.</p>
+  </article>
+  <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/swiftlint-tooling/" rel="noopener" data-en="Making SwiftLint Output Actionable: Context Enrichment and a Parallel Parser" data-zh="让 SwiftLint 结果更好用：补充上下文与并行解析">Making SwiftLint Output Actionable: Context Enrichment and a Parallel Parser</a></h3>
+    <div class="meta">Swift CLI · TaskGroup</div>
+    <p data-en="A small Swift CLI that attaches the enclosing type and function to each lint finding and parses files in parallel." data-zh="一个小型 Swift CLI：为每条 lint 结果补充所属类型与函数，并行解析文件。">A small Swift CLI that attaches the enclosing type and function to each lint finding and parses files in parallel.</p>
+  </article>
+  <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/swizzling-duplicate-taps/" rel="noopener" data-en="Stopping Duplicate Button Taps Globally with Method Swizzling" data-zh="用 Method Swizzling 全局防止按钮重复点击">Stopping Duplicate Button Taps Globally with Method Swizzling</a></h3>
+    <div class="meta" data-en="UIKit · Objective-C runtime" data-zh="UIKit · Objective-C runtime">UIKit · Objective-C runtime</div>
+    <p data-en="One runtime hook on UIControl&#x27;s action dispatch makes every button tap-safe, with the trade-offs." data-zh="在 UIControl 的 action 分发处加入 runtime hook，实现全局按钮防重复点击，并讨论其中的取舍。">One runtime hook on UIControl's action dispatch makes every button tap-safe, with the trade-offs.</p>
+  </article>
+  <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/alert-queue-en/" rel="noopener" data-en="When Two Alerts Want the Screen at Once: Presenting Them Through a Queue" data-zh="两个弹窗同时出现时：用队列依次展示">When Two Alerts Want the Screen at Once: Presenting Them Through a Queue</a></h3>
+    <div class="meta">UIKit · Swift Package</div>
+    <p data-en="A first-in, first-out queue that shows the next alert only after the previous one closes, pulled out into a small Swift package." data-zh="用先进先出队列，等前一个弹窗关闭后再展示下一个，并抽成小型 Swift Package。">A first-in, first-out queue that shows the next alert only after the previous one closes, pulled out into a small Swift package.</p>
+  </article>
+  </div>
+  <h3 class="group-title" data-en="Backend / Infrastructure" data-zh="Backend / Infrastructure">Backend / Infrastructure</h3>
+  <div class="posts">
+  <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/fcm-topic-push-en/" rel="noopener" data-en="Moving Member Push Notifications to FCM Topics: Groups, Languages and the Ones That Never Arrived" data-zh="会员推送迁到 FCM Topics：分组、语言与未送达的消息">Moving Member Push Notifications to FCM Topics: Groups, Languages and the Ones That Never Arrived</a></h3>
+    <div class="meta">Node.js · FCM</div>
+    <p data-en="Moving a membership app&#x27;s push from per-token sends to FCM topics: fixed and one-time topics, language splits, and reconciling subscriptions." data-zh="将会员 App 的推送从逐 token 发送迁到 FCM topics，处理固定与临时主题、语言分组和订阅核对。">Moving a membership app's push from per-token sends to FCM topics: fixed and one-time topics, language splits, and reconciling subscriptions.</p>
+  </article>
+  <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/azure-redis-nat-en/" rel="noopener" data-en="When a Service Can&#x27;t Reach Redis: VNet Integration Changed the Outbound IP" data-zh="服务连不上 Redis：VNet 集成改变了出口 IP">When a Service Can't Reach Redis: VNet Integration Changed the Outbound IP</a></h3>
+    <div class="meta" data-en="Azure · Redis · networking" data-zh="Azure · Redis · networking">Azure · Redis · networking</div>
+    <p data-en="Debugging a push service that lost Redis after VNet integration routed outbound traffic through a NAT gateway." data-zh="排查推送服务在 VNet 集成后无法连接 Redis 的问题：出站流量改走了 NAT gateway。">Debugging a push service that lost Redis after VNet integration routed outbound traffic through a NAT gateway.</p>
+  </article>
+  <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/jmeter-load-test-en/" rel="noopener" data-en="Load-Testing a Membership API Before Release: Scripts, Parameters and Reading the Errors" data-zh="会员 API 上线前压测：脚本、参数与错误分析">Load-Testing a Membership API Before Release: Scripts, Parameters and Reading the Errors</a></h3>
+    <div class="meta">JMeter · Node.js</div>
+    <p data-en="One parameterised JMeter plan for smoke, load and stress runs against a Node.js membership API, and tracing every error back to its cause." data-zh="用同一套参数化 JMeter 计划测试 Node.js 会员 API 的冒烟、负载与压力场景，并逐项追查错误原因。">One parameterised JMeter plan for smoke, load and stress runs against a Node.js membership API, and tracing every error back to its cause.</p>
+  </article>
+  </div>
+</section>
+
+<!-- ======================= SKILLS ======================= -->
+<section id="skills">
+  <h2 data-en="Skills" data-zh="Skills">Skills</h2>
+  <dl class="skills">
+    <dt>iOS / macOS</dt>
+    <dd>Swift, UIKit, SwiftUI, AppKit, MVVM, RxSwift, Swift Concurrency (async/await, Task, TaskGroup), Swift Package Manager, CocoaPods, WidgetKit, XCTest, Swift Testing, Crashlytics.</dd>
+
+    <dt data-en="Working knowledge" data-zh="Working knowledge">Working knowledge</dt>
+    <dd data-en="Objective-C (reading and interop in mixed codebases), Combine, SwiftSyntax." data-zh="Objective-C（混编项目中的代码阅读与互操作）、Combine、SwiftSyntax。">Objective-C (reading and interop in mixed codebases), Combine, SwiftSyntax.</dd>
+
+    <dt data-en="Full-stack" data-zh="Full-stack">Full-stack</dt>
+    <dd>TypeScript, React, Next.js, Node.js, Express, Prisma, PostgreSQL, Redis / BullMQ, REST APIs.</dd>
+
+    <dt data-en="Delivery" data-zh="Delivery">Delivery</dt>
+    <dd data-en="Docker, Azure, Cloudflare, GitHub Actions, JMeter, Git. Multi-environment iOS release scripts (DEV / SIT / UAT / PROD) and Mac App Store submission." data-zh="Docker、Azure、Cloudflare、GitHub Actions、JMeter、Git。iOS 多环境发布脚本（DEV / SIT / UAT / PROD）与 Mac App Store 提审。">Docker, Azure, Cloudflare, GitHub Actions, JMeter, Git. Multi-environment iOS release scripts (DEV / SIT / UAT / PROD) and Mac App Store submission.</dd>
+
+    <dt data-en="Languages" data-zh="语言">Languages</dt>
+    <dd data-en="Mandarin (native). English: professional reading and writing, conversational spoken." data-zh="普通话（母语）。英语：专业阅读与写作，日常口语交流。">Mandarin (native). English: professional reading and writing, conversational spoken.</dd>
+  </dl>
+</section>
+
+<!-- ======================= CONTACT ======================= -->
+<section id="contact">
+  <h2 data-en="Contact" data-zh="联系我">Contact</h2>
+  <p class="section-note" data-en="Open to iOS (Swift) and TypeScript full-stack roles in Shanghai. The fastest way to reach me is a LinkedIn message or email." data-zh="寻找上海的 iOS（Swift）与 TypeScript 全栈岗位。通过 LinkedIn 消息或邮件联系我最快。">Open to iOS (Swift) and TypeScript full-stack roles in Shanghai. The fastest way to reach me is a LinkedIn message or email.</p>
+  <ul class="contact">
+    <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/levi-lei-mobile" rel="noopener">linkedin.com/in/levi-lei-mobile</a></li>
+    <li><span class="k" data-en="Email" data-zh="邮箱">Email</span><a href="mailto:levileiwork@outlook.com">levileiwork@outlook.com</a></li>
+    <li><span class="k">GitHub</span><a href="https://github.com/LeiZiKang" rel="noopener">github.com/LeiZiKang</a></li>
+  </ul>
+</section>
+
+<footer>
+  <p data-en="The apps are published on the Mac App Store under a family member&#x27;s developer account. I build and maintain them." data-zh="这些 App 通过家人的开发者账号上架 Mac App Store，由我开发和维护。">The apps are published on the Mac App Store under a family member's developer account. I build and maintain them.</p>
+  <p data-en="Client work is described without client names, code, designs or screenshots." data-zh="客户项目不公开客户名称、代码、设计或截图。">Client work is described without client names, code, designs or screenshots.</p>
+</footer>
+
+</div>
+<script>
+// URL override > saved choice > browser language. Storage can be unavailable on file://.
+(function () {
+  var toggle = document.getElementById('language-toggle');
+  var saved;
+  try { saved = localStorage.getItem('portfolio-language'); } catch (_) {}
+  var requested = new URLSearchParams(location.search).get('lang');
+  var lang = /^(en|zh)$/.test(requested) ? requested : /^(en|zh)$/.test(saved) ? saved : /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+  var englishTitle = document.title;
+  function apply(next) {
+    lang = next;
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    document.querySelectorAll('[data-en]').forEach(function (el) { el.textContent = el.getAttribute('data-' + lang); });
+    ['aria-label', 'alt'].forEach(function (attr) {
+      document.querySelectorAll('[data-' + attr + '-en]').forEach(function (el) { el.setAttribute(attr, el.getAttribute('data-' + attr + '-' + lang)); });
+    });
+    document.title = lang === 'zh' ? 'Levi Lei 雷子康 — iOS 与 TypeScript 全栈工程师' : englishTitle;
+    toggle.textContent = lang === 'zh' ? 'EN' : '中文';
+    toggle.lang = lang === 'zh' ? 'en' : 'zh-CN';
+    toggle.setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切换为中文');
+  }
+  apply(lang);
+  toggle.hidden = false;
+  toggle.addEventListener('click', function () {
+    var next = lang === 'zh' ? 'en' : 'zh';
+    apply(next);
+    try { localStorage.setItem('portfolio-language', next); } catch (_) {}
+    // Keep a URL override in sync so a reload preserves this explicit choice.
+    try {
+      var url = new URL(location.href);
+      if (url.searchParams.has('lang')) { url.searchParams.set('lang', next); history.replaceState(null, '', url); }
+    } catch (_) {}
+  });
+})();
+
+// Fade sections and cards in as they scroll into view.
+(function () {
+  var items = document.querySelectorAll('section > h2, .card, .work, .post, .shiplog, .tooling li');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('js');
+  items.forEach(function (el) { el.classList.add('reveal'); });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  items.forEach(function (el) { io.observe(el); });
+})();
+
+// Highlight the nav link for the section currently in view.
+(function () {
+  var links = document.querySelectorAll('nav.links a[href^="#"]');
+  if (!('IntersectionObserver' in window) || !links.length) return;
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.removeAttribute('aria-current'); });
+      var a = byId[e.target.id];
+      if (a) {
+        a.setAttribute('aria-current', 'true');
+        var nav = a.parentNode;
+        if (nav.scrollWidth > nav.clientWidth) nav.scrollLeft = a.offsetLeft - 12;
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(byId).forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
