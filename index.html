@@ -612,13 +612,22 @@ nav.links a { white-space: nowrap; }
   .post p { font-size: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 }
 .more-link { margin: 16px 0 0; font: 500 14px/1.4 var(--sans); }
+
+/* ---------- language switch (2026-11-03) ---------- */
+.top-actions .lang-switch { position: relative; display: inline-flex; align-items: center; padding: 3px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line-strong); cursor: pointer; }
+.lang-switch .opt { position: relative; z-index: 1; min-width: 32px; padding: 5px 0; text-align: center; font: 600 12px/1 var(--sans); color: var(--muted); transition: color .2s ease; }
+.lang-switch .knob { position: absolute; top: 3px; bottom: 3px; left: 3px; width: 32px; border-radius: 999px; background: var(--text); transition: transform .22s ease; }
+.lang-switch[data-lang="zh"] .knob { transform: translateX(32px); }
+.lang-switch[data-lang="en"] .opt[data-l="en"], .lang-switch[data-lang="zh"] .opt[data-l="zh"] { color: var(--bg); }
+.lang-switch:hover { border-color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { .lang-switch .knob, .lang-switch .opt { transition: none; } }
 </style>
 </head>
 <body>
 
 <div class="topbar">
 <div class="topbar-inner">
-<nav class="links" aria-label="Sections" data-aria-label-en="Sections" data-aria-label-zh="页面章节">
+<nav class="links" aria-label="Sections" data-aria-label-en="Sections" data-aria-label-zh="页面导航">
   <a href="#apps" data-en="Shipped apps" data-zh="Shipped apps">Shipped apps</a>
   <a href="#tooling" data-en="Tooling" data-zh="Tooling">Tooling</a>
   <a href="#client-work" data-en="Client work" data-zh="Client work">Client work</a>
@@ -627,7 +636,7 @@ nav.links a { white-space: nowrap; }
   <a href="#shiplog" data-en="Ship log" data-zh="Ship log">Ship log</a>
   <a href="#contact" data-en="Contact" data-zh="联系我">Contact</a>
 </nav>
-<div class="top-actions"><a href="mailto:levileiwork@outlook.com?subject=Resume%20request" data-en="Request résumé" data-zh="要简历">Request résumé</a><a href="mailto:levileiwork@outlook.com" data-en="Contact" data-zh="联系我">Contact</a><button id="language-toggle" type="button" hidden>中文</button></div>
+<div class="top-actions"><a href="mailto:levileiwork@outlook.com?subject=Resume%20request" data-en="Request résumé" data-zh="获取简历">Request résumé</a><a href="mailto:levileiwork@outlook.com" data-en="Contact" data-zh="联系我">Contact</a><button id="language-toggle" class="lang-switch" type="button" role="switch" aria-checked="false" data-lang="en" hidden><span class="knob" aria-hidden="true"></span><span class="opt" data-l="en">EN</span><span class="opt" data-l="zh">中</span></button></div>
 </div>
 </div>
 
@@ -638,7 +647,7 @@ nav.links a { white-space: nowrap; }
   <h1>Levi Lei</h1>
   <p class="eyebrow" data-en="iOS · Full-stack TypeScript · Shanghai" data-zh="iOS · TypeScript 全栈 · 上海">iOS · Full-stack TypeScript · Shanghai</p>
   <p class="zh">雷子康</p>
-  <p class="lede" data-en="I build native iOS and macOS apps in Swift, and the TypeScript services behind them. Three years of iOS. Two years of full-stack TypeScript. Five Mac apps on the Mac App Store. Looking for iOS or full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China." data-zh="用 Swift 开发原生 iOS、macOS App，也用 TypeScript 开发背后的服务。3 年 iOS 开发，2 年 TypeScript 全栈，5 款 Mac App 已上架 Mac App Store。正在寻找上海、杭州、苏州或国内远程的 iOS 或全栈岗位。">I build native iOS and macOS apps in Swift, and the TypeScript services behind them. Three years of iOS. Two years of full-stack TypeScript. Five Mac apps on the Mac App Store. Looking for iOS or full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China.</p>
+  <p class="lede" data-en="I build native iOS and macOS apps in Swift, and the TypeScript services behind them. Three years of iOS. Two years of full-stack TypeScript. Five Mac apps on the Mac App Store. Looking for iOS or full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China." data-zh="我用 Swift 写 iOS 和 macOS 原生 App，也用 TypeScript 写它们背后的服务。做了 3 年 iOS、2 年 TypeScript 全栈，有 5 款 Mac App 上架 Mac App Store。现在在找上海、杭州、苏州或国内远程的 iOS / 全栈机会。">I build native iOS and macOS apps in Swift, and the TypeScript services behind them. Three years of iOS. Two years of full-stack TypeScript. Five Mac apps on the Mac App Store. Looking for iOS or full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China.</p>
 
   <p class="status"><i></i><span data-en="Open to new roles · Shanghai / Hangzhou / Suzhou / Remote" data-zh="求职中 · 上海 / 杭州 / 苏州 / 远程">Open to new roles · Shanghai / Hangzhou / Suzhou / Remote</span></p>
   </div>
@@ -656,19 +665,19 @@ nav.links a { white-space: nowrap; }
   <div class="facts">
     <div>
       <b data-en="5 Mac apps" data-zh="5 款 Mac App">5 Mac apps</b>
-      <span data-en="On the Mac App Store. SwiftUI, AppKit, WidgetKit, IOKit." data-zh="均已上架 Mac App Store。使用 SwiftUI、AppKit、WidgetKit、IOKit。">On the Mac App Store. SwiftUI, AppKit, WidgetKit, IOKit.</span>
+      <span data-en="On the Mac App Store. SwiftUI, AppKit, WidgetKit, IOKit." data-zh="全部已上架 Mac App Store，用到 SwiftUI、AppKit、WidgetKit 和 IOKit。">On the Mac App Store. SwiftUI, AppKit, WidgetKit, IOKit.</span>
     </div>
     <div>
-      <b data-en="3 yrs iOS" data-zh="3 年 iOS">3 yrs iOS</b>
-      <span data-en="Swift, UIKit, SwiftUI, Swift Concurrency. Banking and retail apps, large mixed Swift / Objective-C codebases." data-zh="Swift、UIKit、SwiftUI、Swift Concurrency。参与银行与零售 App，以及大型 Swift / Objective-C 混编项目。">Swift, UIKit, SwiftUI, Swift Concurrency. Banking and retail apps, large mixed Swift / Objective-C codebases.</span>
+      <b data-en="3 yrs iOS" data-zh="3 年 iOS 经验">3 yrs iOS</b>
+      <span data-en="Swift, UIKit, SwiftUI, Swift Concurrency. Banking and retail apps, large mixed Swift / Objective-C codebases." data-zh="Swift、UIKit、SwiftUI、Swift Concurrency。做过银行和零售类 App，也做过大型 Swift / Objective-C 混编项目。">Swift, UIKit, SwiftUI, Swift Concurrency. Banking and retail apps, large mixed Swift / Objective-C codebases.</span>
     </div>
     <div>
-      <b data-en="2 yrs TypeScript" data-zh="2 年 TypeScript">2 yrs TypeScript</b>
-      <span data-en="Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ." data-zh="3 个已上线客户项目，使用 Next.js、Node.js、Prisma、PostgreSQL 和 Redis / BullMQ。">Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ.</span>
+      <b data-en="2 yrs TypeScript" data-zh="2 年 TypeScript 全栈">2 yrs TypeScript</b>
+      <span data-en="Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ." data-zh="交付过 3 个已上线的客户项目，技术栈是 Next.js、Node.js、Prisma、PostgreSQL 和 Redis / BullMQ。">Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ.</span>
     </div>
     <div class="tooling-fact">
       <b><a href="#tooling" data-en="4 agent tools" data-zh="4 个 Agent 工具">4 agent tools</a></b>
-      <span data-en="Open source, built on Claude Code and Codex: multi-agent job search, shared project memory, Claude-to-Codex delegation." data-zh="基于 Claude Code 与 Codex 的开源工具：多 Agent 求职流程、共享项目记忆、Claude 指挥 Codex 执行。">Open source, built on Claude Code and Codex: multi-agent job search, shared project memory, Claude-to-Codex delegation.</span>
+      <span data-en="Open source, built on Claude Code and Codex: multi-agent job search, shared project memory, Claude-to-Codex delegation." data-zh="基于 Claude Code 和 Codex 的开源工具：多 Agent 求职流程、跨会话共享的项目记忆、Claude 调度 Codex 执行。">Open source, built on Claude Code and Codex: multi-agent job search, shared project memory, Claude-to-Codex delegation.</span>
     </div>
   </div>
 
@@ -690,7 +699,7 @@ nav.links a { white-space: nowrap; }
 <!-- ======================= SHIPPED APPS ======================= -->
 <section id="apps">
   <h2 data-en="Shipped apps" data-zh="Shipped apps">Shipped apps</h2>
-  <p class="section-note" data-en="Five Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). All five are live on the Mac App Store. Glasswitch and Voltyn build on open-source code, credited on their cards." data-zh="使用 Claude Code、Codex 等 AI 编程工具，独立开发并维护 5 款 Mac App，均已上架 Mac App Store。Glasswitch 和 Voltyn 基于开源代码，来源见各自卡片。">Five Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). All five are live on the Mac App Store. Glasswitch and Voltyn build on open-source code, credited on their cards.</p>
+  <p class="section-note" data-en="Five Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). All five are live on the Mac App Store. Glasswitch and Voltyn build on open-source code, credited on their cards." data-zh="5 款 Mac App 都由我自己开发和维护，开发时用 Claude Code、Codex 等 AI 编程工具，均已上架 Mac App Store。Glasswitch 和 Voltyn 基于开源代码，出处写在各自卡片里。">Five Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). All five are live on the Mac App Store. Glasswitch and Voltyn build on open-source code, credited on their cards.</p>
 
   <div class="app-filter" role="group" aria-label="Filter apps" data-aria-label-en="Filter apps" data-aria-label-zh="筛选 App">
     <button type="button" data-filter="all" aria-pressed="true" data-en="All · 5" data-zh="全部 · 5">All · 5</button>
@@ -706,9 +715,9 @@ nav.links a { white-space: nowrap; }
       <span class="cat" data-en="Menu bar" data-zh="菜单栏工具">Menu bar</span>
       <h3>Voltyn</h3>
       <div class="meta" data-en="v2.0 · macOS 14+ · Apple Silicon MacBooks · paid" data-zh="v2.0 · macOS 14+ · Apple Silicon MacBook · 付费">v2.0 · macOS 14+ · Apple Silicon MacBooks · paid</div>
-      <p data-en="Menu bar power monitor. Live system power with a 60-second trend, power flow, battery health and charging details, local history, and a desktop widget." data-zh="菜单栏功耗监测工具。展示实时系统功耗、60 秒趋势、供电流向、电池健康与充电信息，支持本地历史记录和桌面小组件。">Menu bar power monitor. Live system power with a 60-second trend, power flow, battery health and charging details, local history, and a desktop widget.</p>
+      <p data-en="Menu bar power monitor. Live system power with a 60-second trend, power flow, battery health and charging details, local history, and a desktop widget." data-zh="菜单栏功耗监控工具：实时显示系统功耗和 60 秒趋势、供电流向、电池健康与充电信息，支持本地历史记录和桌面小组件。">Menu bar power monitor. Live system power with a 60-second trend, power flow, battery health and charging details, local history, and a desktop widget.</p>
       <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
-        <p class="small" data-en="Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app." data-zh="通过 IOKit 读取电池与电源数据，用 SQLite 保存历史，通过 App Group 向 WidgetKit 扩展传递快照。无需账号，无遥测。IOKit 读取层源自 MIT 许可的 PowerTop，已在 App 内注明。">Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app.</p>
+        <p class="small" data-en="Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app." data-zh="通过 IOKit 读取电池和电源数据，用 SQLite 存历史，再通过 App Group 把快照传给 WidgetKit 扩展。不需要账号，不收集遥测。IOKit 读取层改自 MIT 协议的 PowerTop，App 内已注明。">Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app.</p>
       </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li>AppKit</li><li>IOKit</li><li>WidgetKit</li><li>SQLite</li>
@@ -724,9 +733,9 @@ nav.links a { white-space: nowrap; }
       <span class="cat" data-en="Menu bar" data-zh="菜单栏工具">Menu bar</span>
       <h3>Glasswitch</h3>
       <div class="meta" data-en="v1.1 · macOS 26+ · paid" data-zh="v1.1 · macOS 26+ · 付费">v1.1 · macOS 26+ · paid</div>
-      <p data-en="Shows your Mac&#x27;s default browser in the menu bar and switches the system HTTP / HTTPS handler to any installed browser. Stays in sync when the default is changed elsewhere." data-zh="在菜单栏显示 Mac 的默认浏览器，可将系统 HTTP / HTTPS 处理程序切换为任意已安装的浏览器。在其他地方更改默认浏览器后，也会保持同步。">Shows your Mac's default browser in the menu bar and switches the system HTTP / HTTPS handler to any installed browser. Stays in sync when the default is changed elsewhere.</p>
+      <p data-en="Shows your Mac&#x27;s default browser in the menu bar and switches the system HTTP / HTTPS handler to any installed browser. Stays in sync when the default is changed elsewhere." data-zh="在菜单栏显示当前默认浏览器，可以把系统的 HTTP / HTTPS 处理程序切换到任意已安装的浏览器；在别处改了默认浏览器，这里也会同步。">Shows your Mac's default browser in the menu bar and switches the system HTTP / HTTPS handler to any installed browser. Stays in sync when the default is changed elsewhere.</p>
       <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
-        <p class="small"><span data-en="Built on the open-source" data-zh="基于开源项目">Built on the open-source</span> <a href="https://github.com/congbo/default-browser-switcher" rel="noopener">default-browser-switcher</a> <span data-en="(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site." data-zh="（MIT）。我负责的改动包括：macOS 26 Liquid Glass 界面、仅使用公开 NSWorkspace API 的沙盒版、中英双语界面、后台同步系统默认浏览器，以及 App Store 上架、官网与支持站点。">(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site.</span></p>
+        <p class="small"><span data-en="Built on the open-source" data-zh="基于开源项目">Built on the open-source</span> <a href="https://github.com/congbo/default-browser-switcher" rel="noopener">default-browser-switcher</a> <span data-en="(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site." data-zh="（MIT 协议）。我做的部分：macOS 26 Liquid Glass 界面、只用公开 NSWorkspace API 的沙盒版、中英双语界面、后台同步系统默认浏览器，以及 App Store 上架、官网和支持页面。">(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site.</span></p>
       </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li>AppKit</li><li>NSWorkspace</li><li>App Sandbox</li><li>SMAppService</li><li>Combine</li>
@@ -742,9 +751,9 @@ nav.links a { white-space: nowrap; }
       <span class="cat" data-en="Developer tools" data-zh="开发者工具">Developer tools</span>
       <h3>Codex Session Viewer</h3>
       <div class="meta" data-en="v1.0 · macOS 26+ · free" data-zh="v1.0 · macOS 26+ · 免费">v1.0 · macOS 26+ · free</div>
-      <p data-en="Browses local Codex CLI session logs. Built in 2025, when Codex was CLI-only: it finds and parses the JSONL session archives, groups them by month and renders the full conversation timeline." data-zh="浏览本地 Codex CLI 会话日志。开发于 2025 年，当时 Codex 还只有 CLI：自动查找并解析 JSONL 会话文件，按月分组，呈现完整对话时间线。">Browses local Codex CLI session logs. Built in 2025, when Codex was CLI-only: it finds and parses the JSONL session archives, groups them by month and renders the full conversation timeline.</p>
+      <p data-en="Browses local Codex CLI session logs. Built in 2025, when Codex was CLI-only: it finds and parses the JSONL session archives, groups them by month and renders the full conversation timeline." data-zh="查看本地 Codex CLI 会话日志的工具。写于 2025 年，那时 Codex 还只有命令行：自动找到并解析 JSONL 会话文件，按月分组，还原完整对话时间线。">Browses local Codex CLI session logs. Built in 2025, when Codex was CLI-only: it finds and parses the JSONL session archives, groups them by month and renders the full conversation timeline.</p>
       <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
-        <p class="small" data-en="Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public." data-zh="首次授权文件夹后保存 security-scoped bookmarks，无需重复授权。源码公开。">Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public.</p>
+        <p class="small" data-en="Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public." data-zh="首次授权文件夹后用 security-scoped bookmarks 保存权限，之后不用重复授权。源码公开。">Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public.</p>
       </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li data-en="JSONL parsing" data-zh="JSONL parsing">JSONL parsing</li><li data-en="Security-scoped bookmarks" data-zh="Security-scoped bookmarks">Security-scoped bookmarks</li>
@@ -760,9 +769,9 @@ nav.links a { white-space: nowrap; }
       <span class="cat" data-en="Developer tools" data-zh="开发者工具">Developer tools</span>
       <h3>UTC Time Looker</h3>
       <div class="meta" data-en="v1.0 · macOS 15.5+ · paid" data-zh="v1.0 · macOS 15.5+ · 付费">v1.0 · macOS 15.5+ · paid</div>
-      <p data-en="Converts UTC dates, ISO 8601 strings and Unix timestamps into local and other time zones as you type. I wrote it for reading UTC times in backend logs." data-zh="输入 UTC 日期、ISO 8601 字符串或 Unix 时间戳，即时转换为本地及其他时区时间。最初是为方便阅读后端日志里的 UTC 时间而写。">Converts UTC dates, ISO 8601 strings and Unix timestamps into local and other time zones as you type. I wrote it for reading UTC times in backend logs.</p>
+      <p data-en="Converts UTC dates, ISO 8601 strings and Unix timestamps into local and other time zones as you type. I wrote it for reading UTC times in backend logs." data-zh="输入 UTC 日期、ISO 8601 字符串或 Unix 时间戳，边输入边换算成本地和其他时区的时间。最初是为了看后端日志里的 UTC 时间而写的。">Converts UTC dates, ISO 8601 strings and Unix timestamps into local and other time zones as you type. I wrote it for reading UTC times in backend logs.</p>
       <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
-        <p class="small" data-en="SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT)." data-zh="SwiftUI 界面，Foundation 解析器。仓库包含解析、夏令时和 UTC 偏移的单元测试。以 MIT 许可开源。">SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT).</p>
+        <p class="small" data-en="SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT)." data-zh="界面用 SwiftUI，解析基于 Foundation。仓库里有解析、夏令时和 UTC 偏移的单元测试，MIT 协议开源。">SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT).</p>
       </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li>Foundation</li><li data-en="Unit tests" data-zh="Unit tests">Unit tests</li>
@@ -778,9 +787,9 @@ nav.links a { white-space: nowrap; }
       <span class="cat" data-en="Productivity" data-zh="效率">Productivity</span>
       <h3>MindNotes</h3>
       <div class="meta" data-en="v1.0 · macOS 15+ · free · released Oct 2026" data-zh="v1.0 · macOS 15+ · 免费 · 2026 年 10 月上线">v1.0 · macOS 15+ · free · released Oct 2026</div>
-      <p data-en="A floating quick-capture button for the Mac: open it, write a thought, save, and get back to work. Drafts are kept automatically; saved notes can be searched, edited and copied." data-zh="Mac 上的悬浮速记按钮：打开、记下想法、保存，继续工作。自动保留草稿，已保存的笔记支持搜索、编辑与复制。">A floating quick-capture button for the Mac: open it, write a thought, save, and get back to work. Drafts are kept automatically; saved notes can be searched, edited and copied.</p>
+      <p data-en="A floating quick-capture button for the Mac: open it, write a thought, save, and get back to work. Drafts are kept automatically; saved notes can be searched, edited and copied." data-zh="Mac 上的悬浮速记按钮：点开、记下想法、保存，接着干活。草稿自动保留，已保存的笔记可以搜索、编辑和复制。">A floating quick-capture button for the Mac: open it, write a thought, save, and get back to work. Drafts are kept automatically; saved notes can be searched, edited and copied.</p>
       <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
-        <p class="small" data-en="Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection." data-zh="笔记以纯 Markdown 文件保存在本地，可在 Finder 中查看。支持英文与简体中文、浅色 / 深色 / 跟随系统外观，以及可选的登录时启动。无需账号，不联网，不收集数据。">Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection.</p>
+        <p class="small" data-en="Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection." data-zh="笔记以纯 Markdown 文件存在本地，可以在 Finder 里直接查看。支持中英文、浅色 / 深色 / 跟随系统，可选登录时启动。不需要账号，不联网，不收集数据。">Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection.</p>
       </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li>AppKit</li><li data-en="Markdown files" data-zh="Markdown 文件">Markdown files</li>
@@ -797,36 +806,36 @@ nav.links a { white-space: nowrap; }
 <!-- ======================= AGENT TOOLING ======================= -->
 <section id="tooling">
   <h2 data-en="Agent tooling" data-zh="Agent tooling">Agent tooling</h2>
-  <p class="section-note" data-en="Open-source tools from how I work with Claude Code and Codex every day." data-zh="来自日常使用 Claude Code 与 Codex 的开源工具。">Open-source tools from how I work with Claude Code and Codex every day.</p>
+  <p class="section-note" data-en="Open-source tools from how I work with Claude Code and Codex every day." data-zh="我日常用 Claude Code 和 Codex 工作时做出来的开源工具。">Open-source tools from how I work with Claude Code and Codex every day.</p>
   <div class="tooling">
     <article class="card">
       <h3><a href="https://github.com/LeiZiKang/job-agent-kit" data-en="job-agent-kit" data-zh="job-agent-kit">job-agent-kit</a></h3>
       <span class="tool-language" data-en="HTML/Python" data-zh="HTML/Python">HTML/Python</span>
-      <p data-en="Agent workflow kit for a job search with Claude Code / Codex. You approve every outward action." data-zh="用 Claude Code / Codex 跑求职流程的 Agent 工具包，每个对外动作都要人批准。">Agent workflow kit for a job search with Claude Code / Codex. You approve every outward action.</p>
+      <p data-en="Agent workflow kit for a job search with Claude Code / Codex. You approve every outward action." data-zh="用 Claude Code / Codex 跑求职流程的 Agent 工具包，所有对外动作都要人工确认。">Agent workflow kit for a job search with Claude Code / Codex. You approve every outward action.</p>
       <ul class="tool-points">
-        <li data-en="Parallel scouting subagents with a manager review" data-zh="并行搜岗子 Agent + 主 Agent 终审">Parallel scouting subagents with a manager review</li>
-        <li data-en="Tracker CLI and weekly review" data-zh="投递记录 CLI 与每周复盘">Tracker CLI and weekly review</li>
-        <li data-en="Read-only patrols, human approval gates" data-zh="只读巡检，对外动作需人工批准">Read-only patrols, human approval gates</li>
+        <li data-en="Parallel scouting subagents with a manager review" data-zh="多个子 Agent 并行搜岗，主 Agent 终审">Parallel scouting subagents with a manager review</li>
+        <li data-en="Tracker CLI and weekly review" data-zh="投递记录 CLI 和每周复盘">Tracker CLI and weekly review</li>
+        <li data-en="Read-only patrols, human approval gates" data-zh="巡检只读，对外动作需人工批准">Read-only patrols, human approval gates</li>
       </ul>
       <div class="actions"><a href="https://github.com/LeiZiKang/job-agent-kit" data-en="GitHub →" data-zh="GitHub →">GitHub →</a> <a href="https://leizikang.github.io/job-agent-kit/" data-en="Site →" data-zh="Site →">Site →</a></div>
     </article>
     <article class="card">
       <h3><a href="https://github.com/LeiZiKang/agent-memory" data-en="agent-memory" data-zh="agent-memory">agent-memory</a></h3>
       <span class="tool-language" data-en="Shell" data-zh="Shell">Shell</span>
-      <p data-en="Plain-file project memory shared by Claude Code and Codex." data-zh="Claude Code 与 Codex 共用的纯文件项目记忆。">Plain-file project memory shared by Claude Code and Codex.</p>
+      <p data-en="Plain-file project memory shared by Claude Code and Codex." data-zh="纯文件形式的项目记忆，Claude Code 和 Codex 跨会话共用。">Plain-file project memory shared by Claude Code and Codex.</p>
       <ul class="tool-points">
         <li data-en="About 25 lines of rules" data-zh="约 25 行规则">About 25 lines of rules</li>
         <li data-en="Session-start hook" data-zh="会话启动 hook">Session-start hook</li>
-        <li data-en="Linter for bloat and stale state" data-zh="检查臃肿和过期内容的 linter">Linter for bloat and stale state</li>
+        <li data-en="Linter for bloat and stale state" data-zh="检查记忆臃肿和过期内容的 linter">Linter for bloat and stale state</li>
       </ul>
       <div class="actions"><a href="https://github.com/LeiZiKang/agent-memory" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
     </article>
     <article class="card">
       <h3><a href="https://github.com/LeiZiKang/codex-delegate" data-en="codex-delegate" data-zh="codex-delegate">codex-delegate</a></h3>
       <span class="tool-language" data-en="Shell" data-zh="Shell">Shell</span>
-      <p data-en="Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds." data-zh="Claude Code skill：Claude 写任务书并验收，本地 Codex CLI 负责实现。">Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds.</p>
+      <p data-en="Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds." data-zh="Claude Code skill：Claude 写任务书、做验收，本地 Codex CLI 负责写代码。">Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds.</p>
       <ul class="tool-points">
-        <li data-en="Brief, build, review loop" data-zh="任务书 → 实现 → 验收 的循环">Brief, build, review loop</li>
+        <li data-en="Brief, build, review loop" data-zh="任务书 → 实现 → 验收的循环">Brief, build, review loop</li>
         <li data-en="Saves Claude usage" data-zh="节省 Claude 用量">Saves Claude usage</li>
       </ul>
       <div class="actions"><a href="https://github.com/LeiZiKang/codex-delegate" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
@@ -846,7 +855,7 @@ nav.links a { white-space: nowrap; }
 
 <section id="client-work">
   <h2 data-en="Client work" data-zh="Client work">Client work</h2>
-  <p class="section-note" data-en="At ESD Services Limited, delivering for Hong Kong clients with two to three projects in parallel. Clients are not named and no client code or screenshots are shown." data-zh="在 ESD Services Limited 为香港客户交付项目，同时推进 2 至 3 个项目。不公开客户名称，也不展示客户代码或截图。">At ESD Services Limited, delivering for Hong Kong clients with two to three projects in parallel. Clients are not named and no client code or screenshots are shown.</p>
+  <p class="section-note" data-en="At ESD Services Limited, delivering for Hong Kong clients with two to three projects in parallel. Clients are not named and no client code or screenshots are shown." data-zh="在 ESD Services Limited 为香港客户交付项目，通常同时推进 2–3 个。客户名称不公开，也不展示客户代码和截图。">At ESD Services Limited, delivering for Hong Kong clients with two to three projects in parallel. Clients are not named and no client code or screenshots are shown.</p>
 
   <h3 class="group-title" data-en="Native iOS" data-zh="Native iOS">Native iOS</h3>
   <div class="work-grid">
@@ -855,12 +864,12 @@ nav.links a { white-space: nowrap; }
     <h3 data-en="Retail commerce app" data-zh="零售电商 App">Retail commerce app</h3>
     <div class="meta" data-en="iOS Developer · UIKit, MVVM, RxSwift" data-zh="iOS 开发 · UIKit、MVVM、RxSwift">iOS Developer · UIKit, MVVM, RxSwift</div>
     <ul>
-      <li data-en="One of the primary iOS developers on a long-lived codebase: product detail, cart, checkout, payment handoff and order history." data-zh="长期迭代代码库的主要 iOS 开发之一，负责商品详情、购物车、结账、支付跳转和订单历史。">One of the primary iOS developers on a long-lived codebase: product detail, cart, checkout, payment handoff and order history.</li>
+      <li data-en="One of the primary iOS developers on a long-lived codebase: product detail, cart, checkout, payment handoff and order history." data-zh="一个长期迭代项目的主力 iOS 开发之一，负责商品详情、购物车、结算、支付跳转和订单记录。">One of the primary iOS developers on a long-lived codebase: product detail, cart, checkout, payment handoff and order history.</li>
     </ul>
     <details class="more"><summary data-en="More" data-zh="展开">More</summary>
     <ul>
-      <li data-en="Handled the commerce edge cases that only show up in production: items that become invalid, inventory changes mid-session, coupon validation, zero-total checkout, recovery from cancelled payments." data-zh="处理线上电商边界情况：商品失效、会话中库存变化、优惠券校验、零元结账，以及取消支付后的恢复。">Handled the commerce edge cases that only show up in production: items that become invalid, inventory changes mid-session, coupon validation, zero-total checkout, recovery from cancelled payments.</li>
-      <li data-en="Extracted local Swift Packages in a CocoaPods codebase: a queue for competing alerts, and a wrapper for notification permissions and settings deep-links. The client later brought me back for a second phase." data-zh="在 CocoaPods 项目中抽出本地 Swift Packages：用队列协调多个弹窗，并封装通知权限和设置页跳转。后来客户再次邀请我参与第二阶段。">Extracted local Swift Packages in a CocoaPods codebase: a queue for competing alerts, and a wrapper for notification permissions and settings deep-links. The client later brought me back for a second phase.</li>
+      <li data-en="Handled the commerce edge cases that only show up in production: items that become invalid, inventory changes mid-session, coupon validation, zero-total checkout, recovery from cancelled payments." data-zh="处理只有线上才会遇到的电商边界情况：商品失效、下单过程中库存变化、优惠券校验、0 元订单，以及取消支付后的恢复。">Handled the commerce edge cases that only show up in production: items that become invalid, inventory changes mid-session, coupon validation, zero-total checkout, recovery from cancelled payments.</li>
+      <li data-en="Extracted local Swift Packages in a CocoaPods codebase: a queue for competing alerts, and a wrapper for notification permissions and settings deep-links. The client later brought me back for a second phase." data-zh="在 CocoaPods 项目里抽出本地 Swift Package：用队列协调同时弹出的多个弹窗，封装通知权限和设置页跳转。后来客户又请我回来做第二期。">Extracted local Swift Packages in a CocoaPods codebase: a queue for competing alerts, and a wrapper for notification permissions and settings deep-links. The client later brought me back for a second phase.</li>
     </ul>
     </details>
   </article>
@@ -869,12 +878,12 @@ nav.links a { white-space: nowrap; }
     <h3 data-en="Mobile banking app" data-zh="手机银行 App">Mobile banking app</h3>
     <div class="meta" data-en="iOS Developer · short project · Swift, Objective-C, SwiftSyntax" data-zh="iOS 开发 · 短期项目 · Swift、Objective-C、SwiftSyntax">iOS Developer · short project · Swift, Objective-C, SwiftSyntax</div>
     <ul>
-      <li data-en="Built a reusable WKWebView PDF download-and-share component for a large mixed Swift / Objective-C codebase, extracted as a Swift Package usable from both languages." data-zh="为大型 Swift / Objective-C 混编项目开发可复用的 WKWebView PDF 下载分享组件，抽成两种语言均可调用的 Swift Package。">Built a reusable WKWebView PDF download-and-share component for a large mixed Swift / Objective-C codebase, extracted as a Swift Package usable from both languages.</li>
+      <li data-en="Built a reusable WKWebView PDF download-and-share component for a large mixed Swift / Objective-C codebase, extracted as a Swift Package usable from both languages." data-zh="为大型 Swift / Objective-C 混编项目做了一个可复用的 WKWebView PDF 下载分享组件，抽成 Swift 和 Objective-C 都能调用的 Swift Package。">Built a reusable WKWebView PDF download-and-share component for a large mixed Swift / Objective-C codebase, extracted as a Swift Package usable from both languages.</li>
     </ul>
     <details class="more"><summary data-en="More" data-zh="展开">More</summary>
     <ul>
-      <li data-en="Added configurable app-wide duplicate-tap prevention through the Objective-C runtime." data-zh="通过 Objective-C runtime 加入可配置的全局防重复点击。">Added configurable app-wide duplicate-tap prevention through the Objective-C runtime.</li>
-      <li data-en="Wrote static-analysis tooling with a Swift CLI and SwiftSyntax to turn code findings into a triageable report." data-zh="用 Swift CLI 和 SwiftSyntax 编写静态分析工具，把代码问题整理成可分级处理的报告。">Wrote static-analysis tooling with a Swift CLI and SwiftSyntax to turn code findings into a triageable report.</li>
+      <li data-en="Added configurable app-wide duplicate-tap prevention through the Objective-C runtime." data-zh="通过 Objective-C runtime 加了可配置的全局防重复点击。">Added configurable app-wide duplicate-tap prevention through the Objective-C runtime.</li>
+      <li data-en="Wrote static-analysis tooling with a Swift CLI and SwiftSyntax to turn code findings into a triageable report." data-zh="用 Swift CLI 和 SwiftSyntax 写了静态分析工具，把代码问题整理成可以分级处理的报告。">Wrote static-analysis tooling with a Swift CLI and SwiftSyntax to turn code findings into a triageable report.</li>
     </ul>
     </details>
   </article>
@@ -888,14 +897,14 @@ nav.links a { white-space: nowrap; }
     <h3 data-en="E-commerce backend and push service" data-zh="电商后端与推送服务">E-commerce backend and push service</h3>
     <div class="meta" data-en="Backend Developer · TypeScript, Express, Prisma, PostgreSQL, BullMQ / Redis" data-zh="后端开发 · TypeScript、Express、Prisma、PostgreSQL、BullMQ / Redis">Backend Developer · TypeScript, Express, Prisma, PostgreSQL, BullMQ / Redis</div>
     <ul>
-      <li data-en="Primary developer of the App and CMS APIs: members, messaging, e-coupons and reporting." data-zh="App 与 CMS API 的主要开发，涵盖会员、消息、电子优惠券和报表。">Primary developer of the App and CMS APIs: members, messaging, e-coupons and reporting.</li>
+      <li data-en="Primary developer of the App and CMS APIs: members, messaging, e-coupons and reporting." data-zh="App 和 CMS API 的主力开发，负责会员、消息、电子优惠券和报表。">Primary developer of the App and CMS APIs: members, messaging, e-coupons and reporting.</li>
     </ul>
     <details class="more"><summary data-en="More" data-zh="展开">More</summary>
     <ul>
-      <li data-en="Sole developer of the push-notification service, using BullMQ / Redis for asynchronous delivery, retries, event auditing and language-aware topic subscriptions." data-zh="独立开发推送服务，使用 BullMQ / Redis 实现异步投递、重试、事件审计和多语言主题订阅。">Sole developer of the push-notification service, using BullMQ / Redis for asynchronous delivery, retries, event auditing and language-aware topic subscriptions.</li>
-      <li data-en="Designed and ran JMeter smoke, load, stress and soak suites to find the breaking point before release. Also batch data flows and Docker / Azure multi-environment deployment." data-zh="设计并运行 JMeter 冒烟、负载、压力和稳定性测试，在发布前探测瓶颈。还负责批处理数据流和 Docker / Azure 多环境部署。">Designed and ran JMeter smoke, load, stress and soak suites to find the breaking point before release. Also batch data flows and Docker / Azure multi-environment deployment.</li>
+      <li data-en="Sole developer of the push-notification service, using BullMQ / Redis for asynchronous delivery, retries, event auditing and language-aware topic subscriptions." data-zh="独立开发推送服务，用 BullMQ / Redis 做异步投递、重试、事件审计和按语言的主题订阅。">Sole developer of the push-notification service, using BullMQ / Redis for asynchronous delivery, retries, event auditing and language-aware topic subscriptions.</li>
+      <li data-en="Designed and ran JMeter smoke, load, stress and soak suites to find the breaking point before release. Also batch data flows and Docker / Azure multi-environment deployment." data-zh="设计并执行 JMeter 冒烟、负载、压力和稳定性测试，上线前找出瓶颈；也负责批量数据处理和 Docker / Azure 多环境部署。">Designed and ran JMeter smoke, load, stress and soak suites to find the breaking point before release. Also batch data flows and Docker / Azure multi-environment deployment.</li>
     </ul>
-    <figure class="push-flow"><svg class="flow-horizontal" viewBox="0 0 836 240" role="img" aria-label="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-en="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-zh="推送投递流程：App / CMS → Express API → BullMQ 与 Redis 队列 → Push worker → Push providers → Devices；失败后重试回到队列。">
+    <figure class="push-flow"><svg class="flow-horizontal" viewBox="0 0 836 240" role="img" aria-label="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-en="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-zh="推送投递流程：App / CMS → Express API → BullMQ / Redis 队列 → Push worker → 推送服务商 → 设备；失败会重新入队重试。">
 <defs><marker id="arrow-flow-horizontal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="var(--accent)"/></marker></defs>
 <path class="flow-line" d="M126 70 L150 70" marker-end="url(#arrow-flow-horizontal)"/>
 <circle class="delivery-dot" r="3.5" style="offset-path:path('M126 70 L150 70');animation-delay:-0.0s"/>
@@ -924,7 +933,7 @@ nav.links a { white-space: nowrap; }
 <text class="flow-note" x="418" y="168" data-en="Retry" data-zh="Retry">Retry</text>
 <text class="flow-note" x="278" y="211" data-en="Event auditing" data-zh="Event auditing">Event auditing</text>
 <text class="flow-note" x="602" y="211" data-en="Language-aware topic subscriptions" data-zh="多语言主题订阅">Language-aware topic subscriptions</text>
-</svg><svg class="flow-vertical" viewBox="0 0 320 570" role="img" aria-label="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-en="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-zh="推送投递流程：App / CMS → Express API → BullMQ 与 Redis 队列 → Push worker → Push providers → Devices；失败后重试回到队列。">
+</svg><svg class="flow-vertical" viewBox="0 0 320 570" role="img" aria-label="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-en="Push delivery flow: App / CMS, Express API, BullMQ and Redis queue, Push worker, Push providers, Devices. Failed delivery retries return to the queue." data-aria-label-zh="推送投递流程：App / CMS → Express API → BullMQ / Redis 队列 → Push worker → 推送服务商 → 设备；失败会重新入队重试。">
 <defs><marker id="arrow-flow-vertical" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="var(--accent)"/></marker></defs>
 <path class="flow-line" d="M100 68 L100 112" marker-end="url(#arrow-flow-vertical)"/>
 <circle class="delivery-dot" r="3.5" style="offset-path:path('M100 68 L100 112');animation-delay:-0.0s"/>
@@ -954,7 +963,7 @@ nav.links a { white-space: nowrap; }
 <text class="flow-note" x="100" y="549" data-en="Event auditing" data-zh="Event auditing">Event auditing</text>
 <text class="flow-note" x="210" y="389" data-en="Language-aware" data-zh="Language-aware">Language-aware</text>
 <text class="flow-note" x="210" y="410" data-en="topic subscriptions" data-zh="topic subscriptions">topic subscriptions</text>
-</svg><figcaption data-en="Generic push delivery schematic, not a production topology." data-zh="通用推送投递示意图，不代表任何生产环境拓扑。">Generic push delivery schematic, not a production topology.</figcaption></figure>
+</svg><figcaption data-en="Generic push delivery schematic, not a production topology." data-zh="通用的推送投递示意图，不代表任何生产环境的架构。">Generic push delivery schematic, not a production topology.</figcaption></figure>
     </details>
   </article>
 
@@ -962,74 +971,74 @@ nav.links a { white-space: nowrap; }
     <h3 data-en="Event registration platform" data-zh="活动报名平台">Event registration platform</h3>
     <div class="meta" data-en="Full-stack Developer · Next.js, Express, Prisma, PostgreSQL" data-zh="全栈开发 · Next.js、Express、Prisma、PostgreSQL">Full-stack Developer · Next.js, Express, Prisma, PostgreSQL</div>
     <ul>
-      <li data-en="Primary developer across a multilingual public site, an internal CMS and the APIs behind them." data-zh="主要开发多语言官网、内部 CMS 及后端 API。">Primary developer across a multilingual public site, an internal CMS and the APIs behind them.</li>
+      <li data-en="Primary developer across a multilingual public site, an internal CMS and the APIs behind them." data-zh="多语言官网、内部 CMS 和后端 API 的主力开发。">Primary developer across a multilingual public site, an internal CMS and the APIs behind them.</li>
     </ul>
     <details class="more"><summary data-en="More" data-zh="展开">More</summary>
     <ul>
-      <li data-en="Individual and group registration, scheduling and capacity control, with online payments and deferred offline-payment confirmation." data-zh="实现个人与团体报名、排期和名额控制，接入在线支付和线下付款后确认流程。">Individual and group registration, scheduling and capacity control, with online payments and deferred offline-payment confirmation.</li>
-      <li data-en="Permission-aware event management, check-in, CSV export and rescheduling, with bot protection on the public entry points." data-zh="实现带权限控制的活动管理、签到、CSV 导出和改期，并为公开入口加入防机器人保护。">Permission-aware event management, check-in, CSV export and rescheduling, with bot protection on the public entry points.</li>
+      <li data-en="Individual and group registration, scheduling and capacity control, with online payments and deferred offline-payment confirmation." data-zh="实现个人和团体报名、场次排期和名额控制，接入在线支付，以及线下付款后的确认流程。">Individual and group registration, scheduling and capacity control, with online payments and deferred offline-payment confirmation.</li>
+      <li data-en="Permission-aware event management, check-in, CSV export and rescheduling, with bot protection on the public entry points." data-zh="实现带权限控制的活动管理、签到、CSV 导出和改期，公开入口加了防机器人校验。">Permission-aware event management, check-in, CSV export and rescheduling, with bot protection on the public entry points.</li>
     </ul>
     </details>
   </article>
   </div>
 
-  <p class="also" data-en="Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects." data-zh="还参与酒店业务询价与 CMS 平台（Next.js、Express、Prisma），并为全栈项目搭建 Cloudflare 和 GitHub Actions 部署流水线。">Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects.</p>
+  <p class="also" data-en="Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects." data-zh="还参与了酒店业务询价和 CMS 平台（Next.js、Express、Prisma），并为全栈项目搭了 Cloudflare 和 GitHub Actions 部署流水线。">Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects.</p>
 </section>
 
 <!-- ======================= WRITING ======================= -->
 
 <section id="writing">
   <h2 data-en="Writing" data-zh="Writing">Writing</h2>
-  <p class="section-note" data-en="Engineering notes from client work and my own projects." data-zh="记录客户项目与个人项目中的工程实践。">Engineering notes from client work and my own projects.</p>
+  <p class="section-note" data-en="Engineering notes from client work and my own projects." data-zh="客户项目和个人项目里的工程笔记。">Engineering notes from client work and my own projects.</p>
   <h3 class="group-title" data-en="iOS / Mobile" data-zh="iOS / Mobile">iOS / Mobile</h3>
   <div class="posts">
   <article class="post">
-    <h3><a href="https://levi-blog.pages.dev/blog/api-mock-kit-en/" rel="noopener" data-en="Building the Screens Before the Backend Is Ready: an API Mock Kit on URLProtocol" data-zh="后端就绪前先做页面：基于 URLProtocol 的 API Mock Kit">Building the Screens Before the Backend Is Ready: an API Mock Kit on URLProtocol</a></h3>
+    <h3><a href="https://levi-blog.pages.dev/blog/api-mock-kit-en/" rel="noopener" data-en="Building the Screens Before the Backend Is Ready: an API Mock Kit on URLProtocol" data-zh="后端还没好，页面先做：基于 URLProtocol 的 API Mock 工具">Building the Screens Before the Backend Is Ready: an API Mock Kit on URLProtocol</a></h3>
     <div class="meta">URLProtocol · UIKit</div>
-    <p data-en="Intercept requests at the network layer and return local JSON per route, with switchable loading, 401, 500 and timeout states, so screens could ship before the backend." data-zh="在网络层拦截请求，按路由返回本地 JSON，支持切换加载中、401、500 和超时状态，让页面开发先于后端推进。">Intercept requests at the network layer and return local JSON per route, with switchable loading, 401, 500 and timeout states, so screens could ship before the backend.</p>
+    <p data-en="Intercept requests at the network layer and return local JSON per route, with switchable loading, 401, 500 and timeout states, so screens could ship before the backend." data-zh="在网络层拦截请求，按路由返回本地 JSON，可以切换加载中、401、500 和超时状态，页面开发不用等后端。">Intercept requests at the network layer and return local JSON per route, with switchable loading, 401, 500 and timeout states, so screens could ship before the backend.</p>
   </article>
   <article class="post">
-    <h3><a href="https://levi-blog.pages.dev/blog/cocoapods-spm-rollback-en/" rel="noopener" data-en="Migrating an Old Project from CocoaPods to SPM, and Then Back Again" data-zh="老项目从 CocoaPods 迁到 SPM，又迁了回来">Migrating an Old Project from CocoaPods to SPM, and Then Back Again</a></h3>
+    <h3><a href="https://levi-blog.pages.dev/blog/cocoapods-spm-rollback-en/" rel="noopener" data-en="Migrating an Old Project from CocoaPods to SPM, and Then Back Again" data-zh="老项目从 CocoaPods 迁到 SPM，后来又迁了回去">Migrating an Old Project from CocoaPods to SPM, and Then Back Again</a></h3>
     <div class="meta">SPM · CocoaPods</div>
-    <p data-en="Moving an old UIKit project&#x27;s dependencies to Swift Package Manager, and why we rolled a thousand-file change back." data-zh="把老 UIKit 项目的依赖迁到 Swift Package Manager，以及为什么最终回滚了涉及上千文件的改动。">Moving an old UIKit project's dependencies to Swift Package Manager, and why we rolled a thousand-file change back.</p>
+    <p data-en="Moving an old UIKit project&#x27;s dependencies to Swift Package Manager, and why we rolled a thousand-file change back." data-zh="把老 UIKit 项目的依赖迁到 Swift Package Manager 的过程，以及为什么最后回滚了一个上千文件的改动。">Moving an old UIKit project's dependencies to Swift Package Manager, and why we rolled a thousand-file change back.</p>
   </article>
   <article class="post">
-    <h3><a href="https://levi-blog.pages.dev/blog/webview-pdf-download-en/" rel="noopener" data-en="Adding a Download-and-Share Button to PDFs in WKWebView" data-zh="给 WKWebView 中的 PDF 加上下载分享按钮">Adding a Download-and-Share Button to PDFs in WKWebView</a></h3>
+    <h3><a href="https://levi-blog.pages.dev/blog/webview-pdf-download-en/" rel="noopener" data-en="Adding a Download-and-Share Button to PDFs in WKWebView" data-zh="给 WKWebView 里的 PDF 加上下载和分享按钮">Adding a Download-and-Share Button to PDFs in WKWebView</a></h3>
     <div class="meta" data-en="WKWebView · protocol extensions" data-zh="WKWebView · protocol extensions">WKWebView · protocol extensions</div>
-    <p data-en="A protocol with a default implementation gave every web view screen a PDF download and share button in a few dozen lines." data-zh="通过带默认实现的 protocol，用几十行代码为各个 WebView 页面加入 PDF 下载分享按钮。">A protocol with a default implementation gave every web view screen a PDF download and share button in a few dozen lines.</p>
+    <p data-en="A protocol with a default implementation gave every web view screen a PDF download and share button in a few dozen lines." data-zh="用一个带默认实现的 protocol，几十行代码就给所有 WebView 页面加上 PDF 下载和分享按钮。">A protocol with a default implementation gave every web view screen a PDF download and share button in a few dozen lines.</p>
   </article>
   <article class="post">
-    <h3><a href="https://levi-blog.pages.dev/blog/swiftlint-tooling/" rel="noopener" data-en="Making SwiftLint Output Actionable: Context Enrichment and a Parallel Parser" data-zh="让 SwiftLint 结果更好用：补充上下文与并行解析">Making SwiftLint Output Actionable: Context Enrichment and a Parallel Parser</a></h3>
+    <h3><a href="https://levi-blog.pages.dev/blog/swiftlint-tooling/" rel="noopener" data-en="Making SwiftLint Output Actionable: Context Enrichment and a Parallel Parser" data-zh="让 SwiftLint 结果更好查：补充上下文、并行解析">Making SwiftLint Output Actionable: Context Enrichment and a Parallel Parser</a></h3>
     <div class="meta">Swift CLI · TaskGroup</div>
-    <p data-en="A small Swift CLI that attaches the enclosing type and function to each lint finding and parses files in parallel." data-zh="一个小型 Swift CLI：为每条 lint 结果补充所属类型与函数，并行解析文件。">A small Swift CLI that attaches the enclosing type and function to each lint finding and parses files in parallel.</p>
+    <p data-en="A small Swift CLI that attaches the enclosing type and function to each lint finding and parses files in parallel." data-zh="一个小 Swift CLI：给每条 lint 结果补上所在的类型和函数，并行解析文件。">A small Swift CLI that attaches the enclosing type and function to each lint finding and parses files in parallel.</p>
   </article>
   <article class="post">
     <h3><a href="https://levi-blog.pages.dev/blog/swizzling-duplicate-taps/" rel="noopener" data-en="Stopping Duplicate Button Taps Globally with Method Swizzling" data-zh="用 Method Swizzling 全局防止按钮重复点击">Stopping Duplicate Button Taps Globally with Method Swizzling</a></h3>
     <div class="meta" data-en="UIKit · Objective-C runtime" data-zh="UIKit · Objective-C runtime">UIKit · Objective-C runtime</div>
-    <p data-en="One runtime hook on UIControl&#x27;s action dispatch makes every button tap-safe, with the trade-offs." data-zh="在 UIControl 的 action 分发处加入 runtime hook，实现全局按钮防重复点击，并讨论其中的取舍。">One runtime hook on UIControl's action dispatch makes every button tap-safe, with the trade-offs.</p>
+    <p data-en="One runtime hook on UIControl&#x27;s action dispatch makes every button tap-safe, with the trade-offs." data-zh="在 UIControl 的 action 分发处加一个 runtime hook，全局防止按钮重复点击，也聊聊其中的取舍。">One runtime hook on UIControl's action dispatch makes every button tap-safe, with the trade-offs.</p>
   </article>
   <article class="post">
-    <h3><a href="https://levi-blog.pages.dev/blog/alert-queue-en/" rel="noopener" data-en="When Two Alerts Want the Screen at Once: Presenting Them Through a Queue" data-zh="两个弹窗同时出现时：用队列依次展示">When Two Alerts Want the Screen at Once: Presenting Them Through a Queue</a></h3>
+    <h3><a href="https://levi-blog.pages.dev/blog/alert-queue-en/" rel="noopener" data-en="When Two Alerts Want the Screen at Once: Presenting Them Through a Queue" data-zh="两个弹窗同时要出现：用队列按顺序展示">When Two Alerts Want the Screen at Once: Presenting Them Through a Queue</a></h3>
     <div class="meta">UIKit · Swift Package</div>
-    <p data-en="A first-in, first-out queue that shows the next alert only after the previous one closes, pulled out into a small Swift package." data-zh="用先进先出队列，等前一个弹窗关闭后再展示下一个，并抽成小型 Swift Package。">A first-in, first-out queue that shows the next alert only after the previous one closes, pulled out into a small Swift package.</p>
+    <p data-en="A first-in, first-out queue that shows the next alert only after the previous one closes, pulled out into a small Swift package." data-zh="用先进先出队列，前一个弹窗关掉再弹下一个，并抽成一个小 Swift Package。">A first-in, first-out queue that shows the next alert only after the previous one closes, pulled out into a small Swift package.</p>
   </article>
   </div>
   <h3 class="group-title" data-en="Backend / Infrastructure" data-zh="Backend / Infrastructure">Backend / Infrastructure</h3>
   <div class="posts">
   <article class="post">
-    <h3><a href="https://levi-blog.pages.dev/blog/fcm-topic-push-en/" rel="noopener" data-en="Moving Member Push Notifications to FCM Topics: Groups, Languages and the Ones That Never Arrived" data-zh="会员推送迁到 FCM Topics：分组、语言与未送达的消息">Moving Member Push Notifications to FCM Topics: Groups, Languages and the Ones That Never Arrived</a></h3>
+    <h3><a href="https://levi-blog.pages.dev/blog/fcm-topic-push-en/" rel="noopener" data-en="Moving Member Push Notifications to FCM Topics: Groups, Languages and the Ones That Never Arrived" data-zh="会员推送迁到 FCM Topics：分组、多语言和没送达的消息">Moving Member Push Notifications to FCM Topics: Groups, Languages and the Ones That Never Arrived</a></h3>
     <div class="meta">Node.js · FCM</div>
-    <p data-en="Moving a membership app&#x27;s push from per-token sends to FCM topics: fixed and one-time topics, language splits, and reconciling subscriptions." data-zh="将会员 App 的推送从逐 token 发送迁到 FCM topics，处理固定与临时主题、语言分组和订阅核对。">Moving a membership app's push from per-token sends to FCM topics: fixed and one-time topics, language splits, and reconciling subscriptions.</p>
+    <p data-en="Moving a membership app&#x27;s push from per-token sends to FCM topics: fixed and one-time topics, language splits, and reconciling subscriptions." data-zh="把会员 App 的推送从逐个 token 发送改成 FCM topics，处理固定和临时主题、按语言分组和订阅核对。">Moving a membership app's push from per-token sends to FCM topics: fixed and one-time topics, language splits, and reconciling subscriptions.</p>
   </article>
   <article class="post">
-    <h3><a href="https://levi-blog.pages.dev/blog/azure-redis-nat-en/" rel="noopener" data-en="When a Service Can&#x27;t Reach Redis: VNet Integration Changed the Outbound IP" data-zh="服务连不上 Redis：VNet 集成改变了出口 IP">When a Service Can't Reach Redis: VNet Integration Changed the Outbound IP</a></h3>
+    <h3><a href="https://levi-blog.pages.dev/blog/azure-redis-nat-en/" rel="noopener" data-en="When a Service Can&#x27;t Reach Redis: VNet Integration Changed the Outbound IP" data-zh="服务连不上 Redis：VNet 集成改变了出站 IP">When a Service Can't Reach Redis: VNet Integration Changed the Outbound IP</a></h3>
     <div class="meta" data-en="Azure · Redis · networking" data-zh="Azure · Redis · networking">Azure · Redis · networking</div>
-    <p data-en="Debugging a push service that lost Redis after VNet integration routed outbound traffic through a NAT gateway." data-zh="排查推送服务在 VNet 集成后无法连接 Redis 的问题：出站流量改走了 NAT gateway。">Debugging a push service that lost Redis after VNet integration routed outbound traffic through a NAT gateway.</p>
+    <p data-en="Debugging a push service that lost Redis after VNet integration routed outbound traffic through a NAT gateway." data-zh="推送服务开启 VNet 集成后连不上 Redis，原因是出站流量改走了 NAT gateway。">Debugging a push service that lost Redis after VNet integration routed outbound traffic through a NAT gateway.</p>
   </article>
   <article class="post">
-    <h3><a href="https://levi-blog.pages.dev/blog/jmeter-load-test-en/" rel="noopener" data-en="Load-Testing a Membership API Before Release: Scripts, Parameters and Reading the Errors" data-zh="会员 API 上线前压测：脚本、参数与错误分析">Load-Testing a Membership API Before Release: Scripts, Parameters and Reading the Errors</a></h3>
+    <h3><a href="https://levi-blog.pages.dev/blog/jmeter-load-test-en/" rel="noopener" data-en="Load-Testing a Membership API Before Release: Scripts, Parameters and Reading the Errors" data-zh="会员 API 上线前的压测：脚本、参数和报错分析">Load-Testing a Membership API Before Release: Scripts, Parameters and Reading the Errors</a></h3>
     <div class="meta">JMeter · Node.js</div>
-    <p data-en="One parameterised JMeter plan for smoke, load and stress runs against a Node.js membership API, and tracing every error back to its cause." data-zh="用同一套参数化 JMeter 计划测试 Node.js 会员 API 的冒烟、负载与压力场景，并逐项追查错误原因。">One parameterised JMeter plan for smoke, load and stress runs against a Node.js membership API, and tracing every error back to its cause.</p>
+    <p data-en="One parameterised JMeter plan for smoke, load and stress runs against a Node.js membership API, and tracing every error back to its cause." data-zh="用同一套参数化 JMeter 计划对 Node.js 会员 API 做冒烟、负载和压力测试，并逐项追查报错原因。">One parameterised JMeter plan for smoke, load and stress runs against a Node.js membership API, and tracing every error back to its cause.</p>
   </article>
   </div>
   <p class="more-link"><a href="https://levi-blog.pages.dev/" rel="noopener" data-en="All posts on the blog →" data-zh="去博客看全部文章 →">All posts on the blog →</a></p>
@@ -1052,7 +1061,7 @@ nav.links a { white-space: nowrap; }
     <dd data-en="Docker, Azure, Cloudflare, GitHub Actions, JMeter, Git. Multi-environment iOS release scripts (DEV / SIT / UAT / PROD) and Mac App Store submission." data-zh="Docker、Azure、Cloudflare、GitHub Actions、JMeter、Git。iOS 多环境发布脚本（DEV / SIT / UAT / PROD）与 Mac App Store 提审。">Docker, Azure, Cloudflare, GitHub Actions, JMeter, Git. Multi-environment iOS release scripts (DEV / SIT / UAT / PROD) and Mac App Store submission.</dd>
 
     <dt data-en="Languages" data-zh="语言">Languages</dt>
-    <dd data-en="Mandarin (native). English: professional reading and writing, conversational spoken." data-zh="普通话（母语）。英语：专业阅读与写作，日常口语交流。">Mandarin (native). English: professional reading and writing, conversational spoken.</dd>
+    <dd data-en="Mandarin (native). English: professional reading and writing, conversational spoken." data-zh="普通话（母语）。英语：专业文档读写没问题，口语可以日常交流。">Mandarin (native). English: professional reading and writing, conversational spoken.</dd>
   </dl>
 </section>
 
@@ -1060,19 +1069,19 @@ nav.links a { white-space: nowrap; }
 <!-- ======================= SHIP LOG ======================= -->
 <section id="shiplog">
   <h2 data-en="Ship log" data-zh="Ship log">Ship log</h2>
-  <p class="section-note" data-en="Mac App Store launches, newest first." data-zh="按时间倒序排列的 Mac App Store 上线记录。">Mac App Store launches, newest first.</p>
+  <p class="section-note" data-en="Mac App Store launches, newest first." data-zh="Mac App Store 上线记录，最新的在前。">Mac App Store launches, newest first.</p>
   <ol class="shiplog">
     <li><time datetime="2026-10-15" data-en="Oct 15, 2026" data-zh="2026 年 10 月 15 日">Oct 15, 2026</time><div class="what"><b>MindNotes – Quick Capture 1.0</b> <span data-en="· new app · floating quick-capture notes" data-zh="· 新 App · 悬浮速记">· new app · floating quick-capture notes</span></div></li>
     <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026 年 9 月 11 日">Sep 11, 2026</time><div class="what"><b>Voltyn 2.0</b> <span data-en="· new app · power and battery monitor with a desktop widget" data-zh="· 新 App · 功耗与电池监测，附桌面小组件">· new app · power and battery monitor with a desktop widget</span></div></li>
     <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026 年 9 月 11 日">Sep 11, 2026</time><div class="what"><b>Glasswitch</b> <span data-en="· new app · default-browser switcher, 1.1 followed Sep 12" data-zh="· 新 App · 默认浏览器切换，9 月 12 日更新至 1.1">· new app · default-browser switcher, 1.1 followed Sep 12</span></div></li>
     <li><time datetime="2026-09-08" data-en="Sep 8, 2026" data-zh="2026 年 9 月 8 日">Sep 8, 2026</time><div class="what"><b>UTC Time Looker 1.0</b> <span data-en="· new app · one-click UTC timestamp converter" data-zh="· 新 App · 一键转换 UTC 时间戳">· new app · one-click UTC timestamp converter</span></div></li>
-    <li class="old"><time datetime="2025-11-25" data-en="Nov 25, 2025" data-zh="2025 年 11 月 25 日">Nov 25, 2025</time><div class="what"><b>Codex Session Viewer 1.0</b> <span data-en="· new app · GUI for browsing Codex / Claude Code sessions" data-zh="· 新 App · 图形界面浏览 Codex / Claude Code 会话">· new app · GUI for browsing Codex / Claude Code sessions</span></div></li>
+    <li class="old"><time datetime="2025-11-25" data-en="Nov 25, 2025" data-zh="2025 年 11 月 25 日">Nov 25, 2025</time><div class="what"><b>Codex Session Viewer 1.0</b> <span data-en="· new app · GUI for browsing Codex / Claude Code sessions" data-zh="· 新 App · 用图形界面浏览 Codex / Claude Code 会话">· new app · GUI for browsing Codex / Claude Code sessions</span></div></li>
   </ol>
 </section>
 
 <section id="contact">
   <h2 data-en="Contact" data-zh="联系我">Contact</h2>
-  <p class="section-note" data-en="Open to iOS (Swift) and TypeScript full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China. The fastest way to reach me is a LinkedIn message or email." data-zh="寻找上海、杭州、苏州或国内远程的 iOS（Swift）与 TypeScript 全栈岗位。通过 LinkedIn 消息或邮件联系我最快。">Open to iOS (Swift) and TypeScript full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China. The fastest way to reach me is a LinkedIn message or email.</p>
+  <p class="section-note" data-en="Open to iOS (Swift) and TypeScript full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China. The fastest way to reach me is a LinkedIn message or email." data-zh="在找上海、杭州、苏州或国内远程的 iOS（Swift）和 TypeScript 全栈岗位。发 LinkedIn 消息或邮件找我最快。">Open to iOS (Swift) and TypeScript full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China. The fastest way to reach me is a LinkedIn message or email.</p>
   <ul class="contact">
     <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/levi-lei-mobile" rel="noopener">linkedin.com/in/levi-lei-mobile</a></li>
     <li><span class="k" data-en="Email" data-zh="邮箱">Email</span><a href="mailto:levileiwork@outlook.com">levileiwork@outlook.com</a></li>
@@ -1082,7 +1091,7 @@ nav.links a { white-space: nowrap; }
 
 <footer>
   <p data-en="The apps are published on the Mac App Store under a family member&#x27;s developer account. I build and maintain them." data-zh="这些 App 通过家人的开发者账号上架 Mac App Store，由我开发和维护。">The apps are published on the Mac App Store under a family member's developer account. I build and maintain them.</p>
-  <p data-en="Client work is described without client names, code, designs or screenshots." data-zh="客户项目不公开客户名称、代码、设计或截图。">Client work is described without client names, code, designs or screenshots.</p>
+  <p data-en="Client work is described without client names, code, designs or screenshots." data-zh="客户项目不公开客户名称，也不展示代码、设计稿或截图。">Client work is described without client names, code, designs or screenshots.</p>
 </footer>
 
 </div>
@@ -1103,8 +1112,8 @@ nav.links a { white-space: nowrap; }
       document.querySelectorAll('[data-' + attr + '-en]').forEach(function (el) { el.setAttribute(attr, el.getAttribute('data-' + attr + '-' + lang)); });
     });
     document.title = lang === 'zh' ? 'Levi Lei 雷子康 — iOS 与 TypeScript 全栈工程师' : englishTitle;
-    toggle.textContent = lang === 'zh' ? 'EN' : '中文';
-    toggle.lang = lang === 'zh' ? 'en' : 'zh-CN';
+    toggle.setAttribute('data-lang', lang);
+    toggle.setAttribute('aria-checked', lang === 'zh' ? 'true' : 'false');
     toggle.setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切换为中文');
   }
   apply(lang);
