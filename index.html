@@ -408,9 +408,7 @@ footer p { font-size: 14px; line-height: 1.6; color: var(--muted); margin: 0 0 8
 .card:hover, .work:hover, .post:hover, .facts > div:hover { transform: translateY(-2px); border-color: var(--line-strong); }
 .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
 .js .reveal.in { opacity: 1; transform: none; }
-.tooling { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.tooling li { padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; color: var(--text-2); }
-.tooling a { font-weight: 600; }
+
 @media (prefers-reduced-motion: reduce) {
   .terminal *, .status i, .card, .work, .post, .facts > div, .stack li { animation: none !important; transition: none !important; }
   .term-cmd span { width: auto; }
@@ -544,6 +542,76 @@ ol.shiplog time { white-space: nowrap; }
   .apps > .card:last-child:nth-child(odd) > .shot-img { margin: 0 0 12px; }
   .apps > .card:last-child:nth-child(odd) > :not(.shot-img) { grid-column: auto; }
 }
+
+/* ---------- portfolio hierarchy and responsive navigation ---------- */
+body { counter-reset: section; padding-top: 56px; }
+section { padding: 88px 0 0; }
+section > h2::before {
+  counter-increment: section;
+  content: counter(section, decimal-leading-zero);
+  display: block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font: 500 12px/1.4 var(--mono);
+  letter-spacing: 0.08em;
+}
+p, .section-note, .post p, footer p { max-width: 68ch; }
+.facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tooling-fact { position: relative; }
+.tooling-fact a { color: inherit; }
+.tooling-fact a::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
+.tooling-fact a:focus-visible { outline: none; }
+.tooling-fact a:focus-visible::after { outline: 2px solid var(--accent); outline-offset: 3px; }
+.tooling { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.tooling > .card { padding: 22px 16px; min-width: 0; }
+.tooling h3 { font-size: 20px; overflow-wrap: anywhere; }
+.tooling h3 a { color: var(--text); }
+.tooling .tool-language { align-self: flex-start; margin-top: 10px; margin-bottom: 14px; padding: 3px 8px; border-radius: 6px; background: var(--chip-bg); color: var(--muted); font: 500 12px/1.4 var(--mono); }
+.tool-points { padding-left: 18px; margin-top: 0; margin-bottom: 22px; color: var(--text-2); font-size: 14px; }
+.tool-points li + li { margin-top: 6px; }
+.work-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: start; }
+.work-grid .work { margin: 0; min-width: 0; }
+.work .more { margin-top: 16px; }
+.work .more summary { cursor: pointer; color: var(--muted); font: 500 13px/1.4 var(--sans); }
+.work .more summary:hover { color: var(--accent); }
+.work .more > ul { margin-top: 14px; }
+.work .flow-horizontal { display: none !important; }
+.work .flow-vertical { display: block !important; max-width: 320px; margin: auto; }
+.topbar-inner { flex-wrap: nowrap; gap: 12px; }
+nav.links { flex: 1 1 0; min-width: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+nav.links::-webkit-scrollbar { display: none; }
+nav.links a { white-space: nowrap; }
+.top-actions { flex: 0 0 auto; }
+@media (min-width: 900px) { .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 899px) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 559px) {
+  .facts, .tooling { grid-template-columns: minmax(0, 1fr); }
+  section { padding-top: 56px; }
+  .topbar-inner { gap: 8px; }
+  .top-actions { gap: 5px; }
+  .top-actions a, .top-actions button { padding: 7px 8px; font-size: 12px; }
+}
+@media print {
+  body { padding-top: 0; }
+  section { padding-top: 28px; }
+  .work .flow-horizontal { display: block !important; }
+  .work .flow-vertical { display: none !important; }
+  .work .more::details-content { content-visibility: visible; }
+  .work .more > :not(summary) { display: block !important; }
+  .work .more summary { display: none; }
+}
+
+/* ---------- writing: two-column index on wide screens (2026-11-03) ---------- */
+@media (min-width: 900px) {
+  .posts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .post { padding: 16px 20px; }
+  .post + .post { border-top: 0; }
+  .posts > .post:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .posts > .post:nth-child(odd) { border-right: 1px solid var(--line); }
+  .posts > .post:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: 0; }
+  .post p { font-size: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+}
+.more-link { margin: 16px 0 0; font: 500 14px/1.4 var(--sans); }
 </style>
 </head>
 <body>
@@ -551,12 +619,12 @@ ol.shiplog time { white-space: nowrap; }
 <div class="topbar">
 <div class="topbar-inner">
 <nav class="links" aria-label="Sections" data-aria-label-en="Sections" data-aria-label-zh="页面章节">
-  <a href="#shiplog" data-en="Ship log" data-zh="Ship log">Ship log</a>
   <a href="#apps" data-en="Shipped apps" data-zh="Shipped apps">Shipped apps</a>
-  <a href="#client-work" data-en="Client work" data-zh="Client work">Client work</a>
   <a href="#tooling" data-en="Tooling" data-zh="Tooling">Tooling</a>
+  <a href="#client-work" data-en="Client work" data-zh="Client work">Client work</a>
   <a href="#writing" data-en="Writing" data-zh="Writing">Writing</a>
   <a href="#skills" data-en="Skills" data-zh="Skills">Skills</a>
+  <a href="#shiplog" data-en="Ship log" data-zh="Ship log">Ship log</a>
   <a href="#contact" data-en="Contact" data-zh="联系我">Contact</a>
 </nav>
 <div class="top-actions"><a href="mailto:levileiwork@outlook.com?subject=Resume%20request" data-en="Request résumé" data-zh="要简历">Request résumé</a><a href="mailto:levileiwork@outlook.com" data-en="Contact" data-zh="联系我">Contact</a><button id="language-toggle" type="button" hidden>中文</button></div>
@@ -598,6 +666,10 @@ ol.shiplog time { white-space: nowrap; }
       <b data-en="2 yrs TypeScript" data-zh="2 年 TypeScript">2 yrs TypeScript</b>
       <span data-en="Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ." data-zh="3 个已上线客户项目，使用 Next.js、Node.js、Prisma、PostgreSQL 和 Redis / BullMQ。">Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ.</span>
     </div>
+    <div class="tooling-fact">
+      <b><a href="#tooling" data-en="4 agent tools" data-zh="4 个 Agent 工具">4 agent tools</a></b>
+      <span data-en="Open source, built on Claude Code and Codex: multi-agent job search, shared project memory, Claude-to-Codex delegation." data-zh="基于 Claude Code 与 Codex 的开源工具：多 Agent 求职流程、共享项目记忆、Claude 指挥 Codex 执行。">Open source, built on Claude Code and Codex: multi-agent job search, shared project memory, Claude-to-Codex delegation.</span>
+    </div>
   </div>
 
   <ul class="stack" aria-label="Main stack" data-aria-label-en="Main stack" data-aria-label-zh="主要技术栈">
@@ -614,18 +686,6 @@ ol.shiplog time { white-space: nowrap; }
 
 </header>
 
-<!-- ======================= SHIP LOG ======================= -->
-<section id="shiplog">
-  <h2 data-en="Ship log" data-zh="Ship log">Ship log</h2>
-  <p class="section-note" data-en="Mac App Store launches, newest first." data-zh="按时间倒序排列的 Mac App Store 上线记录。">Mac App Store launches, newest first.</p>
-  <ol class="shiplog">
-    <li><time datetime="2026-10-15" data-en="Oct 15, 2026" data-zh="2026 年 10 月 15 日">Oct 15, 2026</time><div class="what"><b>MindNotes – Quick Capture 1.0</b> <span data-en="· new app · floating quick-capture notes" data-zh="· 新 App · 悬浮速记">· new app · floating quick-capture notes</span></div></li>
-    <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026 年 9 月 11 日">Sep 11, 2026</time><div class="what"><b>Voltyn 2.0</b> <span data-en="· new app · power and battery monitor with a desktop widget" data-zh="· 新 App · 功耗与电池监测，附桌面小组件">· new app · power and battery monitor with a desktop widget</span></div></li>
-    <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026 年 9 月 11 日">Sep 11, 2026</time><div class="what"><b>Glasswitch</b> <span data-en="· new app · default-browser switcher, 1.1 followed Sep 12" data-zh="· 新 App · 默认浏览器切换，9 月 12 日更新至 1.1">· new app · default-browser switcher, 1.1 followed Sep 12</span></div></li>
-    <li><time datetime="2026-09-08" data-en="Sep 8, 2026" data-zh="2026 年 9 月 8 日">Sep 8, 2026</time><div class="what"><b>UTC Time Looker 1.0</b> <span data-en="· new app · one-click UTC timestamp converter" data-zh="· 新 App · 一键转换 UTC 时间戳">· new app · one-click UTC timestamp converter</span></div></li>
-    <li class="old"><time datetime="2025-11-25" data-en="Nov 25, 2025" data-zh="2025 年 11 月 25 日">Nov 25, 2025</time><div class="what"><b>Codex Session Viewer 1.0</b> <span data-en="· new app · GUI for browsing Codex / Claude Code sessions" data-zh="· 新 App · 图形界面浏览 Codex / Claude Code 会话">· new app · GUI for browsing Codex / Claude Code sessions</span></div></li>
-  </ol>
-</section>
 
 <!-- ======================= SHIPPED APPS ======================= -->
 <section id="apps">
@@ -734,20 +794,75 @@ ol.shiplog time { white-space: nowrap; }
 </section>
 
 <!-- ======================= CLIENT WORK ======================= -->
+<!-- ======================= AGENT TOOLING ======================= -->
+<section id="tooling">
+  <h2 data-en="Agent tooling" data-zh="Agent tooling">Agent tooling</h2>
+  <p class="section-note" data-en="Open-source tools from how I work with Claude Code and Codex every day." data-zh="来自日常使用 Claude Code 与 Codex 的开源工具。">Open-source tools from how I work with Claude Code and Codex every day.</p>
+  <div class="tooling">
+    <article class="card">
+      <h3><a href="https://github.com/LeiZiKang/job-agent-kit" data-en="job-agent-kit" data-zh="job-agent-kit">job-agent-kit</a></h3>
+      <span class="tool-language" data-en="HTML/Python" data-zh="HTML/Python">HTML/Python</span>
+      <p data-en="Agent workflow kit for a job search with Claude Code / Codex. You approve every outward action." data-zh="用 Claude Code / Codex 跑求职流程的 Agent 工具包，每个对外动作都要人批准。">Agent workflow kit for a job search with Claude Code / Codex. You approve every outward action.</p>
+      <ul class="tool-points">
+        <li data-en="Parallel scouting subagents with a manager review" data-zh="并行搜岗子 Agent + 主 Agent 终审">Parallel scouting subagents with a manager review</li>
+        <li data-en="Tracker CLI and weekly review" data-zh="投递记录 CLI 与每周复盘">Tracker CLI and weekly review</li>
+        <li data-en="Read-only patrols, human approval gates" data-zh="只读巡检，对外动作需人工批准">Read-only patrols, human approval gates</li>
+      </ul>
+      <div class="actions"><a href="https://github.com/LeiZiKang/job-agent-kit" data-en="GitHub →" data-zh="GitHub →">GitHub →</a> <a href="https://leizikang.github.io/job-agent-kit/" data-en="Site →" data-zh="Site →">Site →</a></div>
+    </article>
+    <article class="card">
+      <h3><a href="https://github.com/LeiZiKang/agent-memory" data-en="agent-memory" data-zh="agent-memory">agent-memory</a></h3>
+      <span class="tool-language" data-en="Shell" data-zh="Shell">Shell</span>
+      <p data-en="Plain-file project memory shared by Claude Code and Codex." data-zh="Claude Code 与 Codex 共用的纯文件项目记忆。">Plain-file project memory shared by Claude Code and Codex.</p>
+      <ul class="tool-points">
+        <li data-en="About 25 lines of rules" data-zh="约 25 行规则">About 25 lines of rules</li>
+        <li data-en="Session-start hook" data-zh="会话启动 hook">Session-start hook</li>
+        <li data-en="Linter for bloat and stale state" data-zh="检查臃肿和过期内容的 linter">Linter for bloat and stale state</li>
+      </ul>
+      <div class="actions"><a href="https://github.com/LeiZiKang/agent-memory" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
+    </article>
+    <article class="card">
+      <h3><a href="https://github.com/LeiZiKang/codex-delegate" data-en="codex-delegate" data-zh="codex-delegate">codex-delegate</a></h3>
+      <span class="tool-language" data-en="Shell" data-zh="Shell">Shell</span>
+      <p data-en="Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds." data-zh="Claude Code skill：Claude 写任务书并验收，本地 Codex CLI 负责实现。">Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds.</p>
+      <ul class="tool-points">
+        <li data-en="Brief, build, review loop" data-zh="任务书 → 实现 → 验收 的循环">Brief, build, review loop</li>
+        <li data-en="Saves Claude usage" data-zh="节省 Claude 用量">Saves Claude usage</li>
+      </ul>
+      <div class="actions"><a href="https://github.com/LeiZiKang/codex-delegate" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
+    </article>
+    <article class="card">
+      <h3><a href="https://github.com/LeiZiKang/clawd-usage-weather" data-en="clawd-usage-weather" data-zh="clawd-usage-weather">clawd-usage-weather</a></h3>
+      <span class="tool-language" data-en="TypeScript" data-zh="TypeScript">TypeScript</span>
+      <p data-en="A hopping Clawd and a usage forecast above the Claude Code prompt." data-zh="在 Claude Code 输入框上方显示跳动的 Clawd 和用量预报。">A hopping Clawd and a usage forecast above the Claude Code prompt.</p>
+      <ul class="tool-points">
+        <li data-en="Status-line extension" data-zh="状态栏扩展">Status-line extension</li>
+        <li data-en="Usage forecast from local data" data-zh="基于本地数据的用量预报">Usage forecast from local data</li>
+      </ul>
+      <div class="actions"><a href="https://github.com/LeiZiKang/clawd-usage-weather" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
+    </article>
+  </div>
+</section>
+
 <section id="client-work">
   <h2 data-en="Client work" data-zh="Client work">Client work</h2>
   <p class="section-note" data-en="At ESD Services Limited, delivering for Hong Kong clients with two to three projects in parallel. Clients are not named and no client code or screenshots are shown." data-zh="在 ESD Services Limited 为香港客户交付项目，同时推进 2 至 3 个项目。不公开客户名称，也不展示客户代码或截图。">At ESD Services Limited, delivering for Hong Kong clients with two to three projects in parallel. Clients are not named and no client code or screenshots are shown.</p>
 
   <h3 class="group-title" data-en="Native iOS" data-zh="Native iOS">Native iOS</h3>
+  <div class="work-grid">
 
   <article class="work">
     <h3 data-en="Retail commerce app" data-zh="零售电商 App">Retail commerce app</h3>
     <div class="meta" data-en="iOS Developer · UIKit, MVVM, RxSwift" data-zh="iOS 开发 · UIKit、MVVM、RxSwift">iOS Developer · UIKit, MVVM, RxSwift</div>
     <ul>
       <li data-en="One of the primary iOS developers on a long-lived codebase: product detail, cart, checkout, payment handoff and order history." data-zh="长期迭代代码库的主要 iOS 开发之一，负责商品详情、购物车、结账、支付跳转和订单历史。">One of the primary iOS developers on a long-lived codebase: product detail, cart, checkout, payment handoff and order history.</li>
+    </ul>
+    <details class="more"><summary data-en="More" data-zh="展开">More</summary>
+    <ul>
       <li data-en="Handled the commerce edge cases that only show up in production: items that become invalid, inventory changes mid-session, coupon validation, zero-total checkout, recovery from cancelled payments." data-zh="处理线上电商边界情况：商品失效、会话中库存变化、优惠券校验、零元结账，以及取消支付后的恢复。">Handled the commerce edge cases that only show up in production: items that become invalid, inventory changes mid-session, coupon validation, zero-total checkout, recovery from cancelled payments.</li>
       <li data-en="Extracted local Swift Packages in a CocoaPods codebase: a queue for competing alerts, and a wrapper for notification permissions and settings deep-links. The client later brought me back for a second phase." data-zh="在 CocoaPods 项目中抽出本地 Swift Packages：用队列协调多个弹窗，并封装通知权限和设置页跳转。后来客户再次邀请我参与第二阶段。">Extracted local Swift Packages in a CocoaPods codebase: a queue for competing alerts, and a wrapper for notification permissions and settings deep-links. The client later brought me back for a second phase.</li>
     </ul>
+    </details>
   </article>
 
   <article class="work">
@@ -755,18 +870,28 @@ ol.shiplog time { white-space: nowrap; }
     <div class="meta" data-en="iOS Developer · short project · Swift, Objective-C, SwiftSyntax" data-zh="iOS 开发 · 短期项目 · Swift、Objective-C、SwiftSyntax">iOS Developer · short project · Swift, Objective-C, SwiftSyntax</div>
     <ul>
       <li data-en="Built a reusable WKWebView PDF download-and-share component for a large mixed Swift / Objective-C codebase, extracted as a Swift Package usable from both languages." data-zh="为大型 Swift / Objective-C 混编项目开发可复用的 WKWebView PDF 下载分享组件，抽成两种语言均可调用的 Swift Package。">Built a reusable WKWebView PDF download-and-share component for a large mixed Swift / Objective-C codebase, extracted as a Swift Package usable from both languages.</li>
+    </ul>
+    <details class="more"><summary data-en="More" data-zh="展开">More</summary>
+    <ul>
       <li data-en="Added configurable app-wide duplicate-tap prevention through the Objective-C runtime." data-zh="通过 Objective-C runtime 加入可配置的全局防重复点击。">Added configurable app-wide duplicate-tap prevention through the Objective-C runtime.</li>
       <li data-en="Wrote static-analysis tooling with a Swift CLI and SwiftSyntax to turn code findings into a triageable report." data-zh="用 Swift CLI 和 SwiftSyntax 编写静态分析工具，把代码问题整理成可分级处理的报告。">Wrote static-analysis tooling with a Swift CLI and SwiftSyntax to turn code findings into a triageable report.</li>
     </ul>
+    </details>
   </article>
+  </div>
+
 
   <h3 class="group-title" data-en="Full-stack TypeScript" data-zh="Full-stack TypeScript">Full-stack TypeScript</h3>
+  <div class="work-grid">
 
   <article class="work" id="push-service">
     <h3 data-en="E-commerce backend and push service" data-zh="电商后端与推送服务">E-commerce backend and push service</h3>
     <div class="meta" data-en="Backend Developer · TypeScript, Express, Prisma, PostgreSQL, BullMQ / Redis" data-zh="后端开发 · TypeScript、Express、Prisma、PostgreSQL、BullMQ / Redis">Backend Developer · TypeScript, Express, Prisma, PostgreSQL, BullMQ / Redis</div>
     <ul>
       <li data-en="Primary developer of the App and CMS APIs: members, messaging, e-coupons and reporting." data-zh="App 与 CMS API 的主要开发，涵盖会员、消息、电子优惠券和报表。">Primary developer of the App and CMS APIs: members, messaging, e-coupons and reporting.</li>
+    </ul>
+    <details class="more"><summary data-en="More" data-zh="展开">More</summary>
+    <ul>
       <li data-en="Sole developer of the push-notification service, using BullMQ / Redis for asynchronous delivery, retries, event auditing and language-aware topic subscriptions." data-zh="独立开发推送服务，使用 BullMQ / Redis 实现异步投递、重试、事件审计和多语言主题订阅。">Sole developer of the push-notification service, using BullMQ / Redis for asynchronous delivery, retries, event auditing and language-aware topic subscriptions.</li>
       <li data-en="Designed and ran JMeter smoke, load, stress and soak suites to find the breaking point before release. Also batch data flows and Docker / Azure multi-environment deployment." data-zh="设计并运行 JMeter 冒烟、负载、压力和稳定性测试，在发布前探测瓶颈。还负责批处理数据流和 Docker / Azure 多环境部署。">Designed and ran JMeter smoke, load, stress and soak suites to find the breaking point before release. Also batch data flows and Docker / Azure multi-environment deployment.</li>
     </ul>
@@ -830,6 +955,7 @@ ol.shiplog time { white-space: nowrap; }
 <text class="flow-note" x="210" y="389" data-en="Language-aware" data-zh="Language-aware">Language-aware</text>
 <text class="flow-note" x="210" y="410" data-en="topic subscriptions" data-zh="topic subscriptions">topic subscriptions</text>
 </svg><figcaption data-en="Generic push delivery schematic, not a production topology." data-zh="通用推送投递示意图，不代表任何生产环境拓扑。">Generic push delivery schematic, not a production topology.</figcaption></figure>
+    </details>
   </article>
 
   <article class="work">
@@ -837,25 +963,20 @@ ol.shiplog time { white-space: nowrap; }
     <div class="meta" data-en="Full-stack Developer · Next.js, Express, Prisma, PostgreSQL" data-zh="全栈开发 · Next.js、Express、Prisma、PostgreSQL">Full-stack Developer · Next.js, Express, Prisma, PostgreSQL</div>
     <ul>
       <li data-en="Primary developer across a multilingual public site, an internal CMS and the APIs behind them." data-zh="主要开发多语言官网、内部 CMS 及后端 API。">Primary developer across a multilingual public site, an internal CMS and the APIs behind them.</li>
+    </ul>
+    <details class="more"><summary data-en="More" data-zh="展开">More</summary>
+    <ul>
       <li data-en="Individual and group registration, scheduling and capacity control, with online payments and deferred offline-payment confirmation." data-zh="实现个人与团体报名、排期和名额控制，接入在线支付和线下付款后确认流程。">Individual and group registration, scheduling and capacity control, with online payments and deferred offline-payment confirmation.</li>
       <li data-en="Permission-aware event management, check-in, CSV export and rescheduling, with bot protection on the public entry points." data-zh="实现带权限控制的活动管理、签到、CSV 导出和改期，并为公开入口加入防机器人保护。">Permission-aware event management, check-in, CSV export and rescheduling, with bot protection on the public entry points.</li>
     </ul>
+    </details>
   </article>
+  </div>
+
   <p class="also" data-en="Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects." data-zh="还参与酒店业务询价与 CMS 平台（Next.js、Express、Prisma），并为全栈项目搭建 Cloudflare 和 GitHub Actions 部署流水线。">Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects.</p>
 </section>
 
 <!-- ======================= WRITING ======================= -->
-<!-- ======================= AGENT TOOLING ======================= -->
-<section id="tooling">
-  <h2 data-en="Agent tooling" data-zh="Agent tooling">Agent tooling</h2>
-  <p class="section-note" data-en="Open-source tools from how I work with Claude Code and Codex every day." data-zh="来自日常使用 Claude Code 与 Codex 的开源工具。">Open-source tools from how I work with Claude Code and Codex every day.</p>
-  <ul class="tooling">
-    <li><a href="https://github.com/LeiZiKang/job-agent-kit">job-agent-kit</a> <span data-en="· Clone, open Claude Code, say &quot;set me up&quot;: an agent-driven job search." data-zh="· Clone 后打开 Claude Code，说「set me up」，开始由 Agent 协助求职。">· Clone, open Claude Code, say "set me up": an agent-driven job search.</span></li>
-    <li><a href="https://github.com/LeiZiKang/agent-memory">agent-memory</a> <span data-en="· Plain-file project memory shared by Claude Code and Codex." data-zh="· Claude Code 与 Codex 共享的纯文件项目记忆。">· Plain-file project memory shared by Claude Code and Codex.</span></li>
-    <li><a href="https://github.com/LeiZiKang/codex-delegate">codex-delegate</a> <span data-en="· Claude directs, Codex executes, Claude reviews." data-zh="· Claude 指挥，Codex 执行，Claude 审查。">· Claude directs, Codex executes, Claude reviews.</span></li>
-    <li><a href="https://github.com/LeiZiKang/clawd-usage-weather">clawd-usage-weather</a> <span data-en="· A hopping Clawd and a usage forecast above your prompt." data-zh="· 在提示词上方显示跳动的 Clawd 和用量预测。">· A hopping Clawd and a usage forecast above your prompt.</span></li>
-  </ul>
-</section>
 
 <section id="writing">
   <h2 data-en="Writing" data-zh="Writing">Writing</h2>
@@ -911,6 +1032,7 @@ ol.shiplog time { white-space: nowrap; }
     <p data-en="One parameterised JMeter plan for smoke, load and stress runs against a Node.js membership API, and tracing every error back to its cause." data-zh="用同一套参数化 JMeter 计划测试 Node.js 会员 API 的冒烟、负载与压力场景，并逐项追查错误原因。">One parameterised JMeter plan for smoke, load and stress runs against a Node.js membership API, and tracing every error back to its cause.</p>
   </article>
   </div>
+  <p class="more-link"><a href="https://levi-blog.pages.dev/" rel="noopener" data-en="All posts on the blog →" data-zh="去博客看全部文章 →">All posts on the blog →</a></p>
 </section>
 
 <!-- ======================= SKILLS ======================= -->
@@ -935,6 +1057,19 @@ ol.shiplog time { white-space: nowrap; }
 </section>
 
 <!-- ======================= CONTACT ======================= -->
+<!-- ======================= SHIP LOG ======================= -->
+<section id="shiplog">
+  <h2 data-en="Ship log" data-zh="Ship log">Ship log</h2>
+  <p class="section-note" data-en="Mac App Store launches, newest first." data-zh="按时间倒序排列的 Mac App Store 上线记录。">Mac App Store launches, newest first.</p>
+  <ol class="shiplog">
+    <li><time datetime="2026-10-15" data-en="Oct 15, 2026" data-zh="2026 年 10 月 15 日">Oct 15, 2026</time><div class="what"><b>MindNotes – Quick Capture 1.0</b> <span data-en="· new app · floating quick-capture notes" data-zh="· 新 App · 悬浮速记">· new app · floating quick-capture notes</span></div></li>
+    <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026 年 9 月 11 日">Sep 11, 2026</time><div class="what"><b>Voltyn 2.0</b> <span data-en="· new app · power and battery monitor with a desktop widget" data-zh="· 新 App · 功耗与电池监测，附桌面小组件">· new app · power and battery monitor with a desktop widget</span></div></li>
+    <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026 年 9 月 11 日">Sep 11, 2026</time><div class="what"><b>Glasswitch</b> <span data-en="· new app · default-browser switcher, 1.1 followed Sep 12" data-zh="· 新 App · 默认浏览器切换，9 月 12 日更新至 1.1">· new app · default-browser switcher, 1.1 followed Sep 12</span></div></li>
+    <li><time datetime="2026-09-08" data-en="Sep 8, 2026" data-zh="2026 年 9 月 8 日">Sep 8, 2026</time><div class="what"><b>UTC Time Looker 1.0</b> <span data-en="· new app · one-click UTC timestamp converter" data-zh="· 新 App · 一键转换 UTC 时间戳">· new app · one-click UTC timestamp converter</span></div></li>
+    <li class="old"><time datetime="2025-11-25" data-en="Nov 25, 2025" data-zh="2025 年 11 月 25 日">Nov 25, 2025</time><div class="what"><b>Codex Session Viewer 1.0</b> <span data-en="· new app · GUI for browsing Codex / Claude Code sessions" data-zh="· 新 App · 图形界面浏览 Codex / Claude Code 会话">· new app · GUI for browsing Codex / Claude Code sessions</span></div></li>
+  </ol>
+</section>
+
 <section id="contact">
   <h2 data-en="Contact" data-zh="联系我">Contact</h2>
   <p class="section-note" data-en="Open to iOS (Swift) and TypeScript full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China. The fastest way to reach me is a LinkedIn message or email." data-zh="寻找上海、杭州、苏州或国内远程的 iOS（Swift）与 TypeScript 全栈岗位。通过 LinkedIn 消息或邮件联系我最快。">Open to iOS (Swift) and TypeScript full-stack roles in Shanghai, Hangzhou, Suzhou, or remote in China. The fastest way to reach me is a LinkedIn message or email.</p>
