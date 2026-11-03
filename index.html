@@ -515,6 +515,35 @@ ol.shiplog time { white-space: nowrap; }
   nav.links { flex-wrap: nowrap; overflow-x: auto; min-width: 0; }
   nav.links a { white-space: nowrap; }
 }
+
+/* ---------- shipped apps: compact collection (2026-11-03) ---------- */
+.app-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.app-filter button { font: 500 13px/1 var(--sans); padding: 8px 13px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text-2); cursor: pointer; }
+.app-filter button[aria-pressed="true"] { background: var(--text); border-color: var(--text); color: var(--bg); }
+.app-filter button:hover { border-color: var(--accent); }
+.apps { grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 16px; }
+@media (min-width: 900px) { .apps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.apps > .card { padding: 10px 10px 16px; }
+.apps > .card[hidden] { display: none !important; }
+.apps .shot-img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; margin: 0 0 12px; border-radius: 8px; }
+.apps .card > :not(.shot-img) { margin-left: 6px; margin-right: 6px; }
+.apps .cat { font: 600 11px/1.4 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.apps .card h3 { font-size: 17px; }
+.apps .meta { font-size: 12.5px; margin: 2px 0 8px; }
+.apps .card > p { font-size: 14px; line-height: 1.55; margin-bottom: 10px; }
+.apps .chips { margin: 2px 0 10px; gap: 5px; }
+.apps .chips li { font-size: 11.5px; padding: 2px 7px; }
+.apps .more { margin: 0 6px 12px; }
+.apps .more summary { cursor: pointer; font: 500 13px/1.4 var(--sans); color: var(--muted); }
+.apps .more summary:hover { color: var(--accent); }
+.apps .more p.small { margin: 8px 0 0; font-size: 13.5px; line-height: 1.55; }
+.apps .card .actions { gap: 6px; }
+.apps .card .actions a { padding: 7px 11px; font-size: 13px; }
+@media (min-width: 760px) {
+  .apps > .card:last-child:nth-child(odd) { grid-column: auto; display: flex; }
+  .apps > .card:last-child:nth-child(odd) > .shot-img { margin: 0 0 12px; }
+  .apps > .card:last-child:nth-child(odd) > :not(.shot-img) { grid-column: auto; }
+}
 </style>
 </head>
 <body>
@@ -603,14 +632,24 @@ ol.shiplog time { white-space: nowrap; }
   <h2 data-en="Shipped apps" data-zh="Shipped apps">Shipped apps</h2>
   <p class="section-note" data-en="Five Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). All five are live on the Mac App Store. Glasswitch and Voltyn build on open-source code, credited on their cards." data-zh="使用 Claude Code、Codex 等 AI 编程工具，独立开发并维护 5 款 Mac App，均已上架 Mac App Store。Glasswitch 和 Voltyn 基于开源代码，来源见各自卡片。">Five Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). All five are live on the Mac App Store. Glasswitch and Voltyn build on open-source code, credited on their cards.</p>
 
+  <div class="app-filter" role="group" aria-label="Filter apps" data-aria-label-en="Filter apps" data-aria-label-zh="筛选 App">
+    <button type="button" data-filter="all" aria-pressed="true" data-en="All · 5" data-zh="全部 · 5">All · 5</button>
+    <button type="button" data-filter="menubar" aria-pressed="false" data-en="Menu bar" data-zh="菜单栏工具">Menu bar</button>
+    <button type="button" data-filter="dev" aria-pressed="false" data-en="Developer tools" data-zh="开发者工具">Developer tools</button>
+    <button type="button" data-filter="productivity" aria-pressed="false" data-en="Productivity" data-zh="效率">Productivity</button>
+  </div>
+
   <div class="apps">
 
-    <article class="card">
+    <article class="card" data-cat="menubar">
       <img class="shot-img" src="assets/voltyn.jpg" alt="Voltyn screenshot from the Mac App Store listing" data-alt-en="Voltyn screenshot from the Mac App Store listing" data-alt-zh="Voltyn 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <span class="cat" data-en="Menu bar" data-zh="菜单栏工具">Menu bar</span>
       <h3>Voltyn</h3>
       <div class="meta" data-en="v2.0 · macOS 14+ · Apple Silicon MacBooks · paid" data-zh="v2.0 · macOS 14+ · Apple Silicon MacBook · 付费">v2.0 · macOS 14+ · Apple Silicon MacBooks · paid</div>
       <p data-en="Menu bar power monitor. Live system power with a 60-second trend, power flow, battery health and charging details, local history, and a desktop widget." data-zh="菜单栏功耗监测工具。展示实时系统功耗、60 秒趋势、供电流向、电池健康与充电信息，支持本地历史记录和桌面小组件。">Menu bar power monitor. Live system power with a 60-second trend, power flow, battery health and charging details, local history, and a desktop widget.</p>
-      <p class="small" data-en="Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app." data-zh="通过 IOKit 读取电池与电源数据，用 SQLite 保存历史，通过 App Group 向 WidgetKit 扩展传递快照。无需账号，无遥测。IOKit 读取层源自 MIT 许可的 PowerTop，已在 App 内注明。">Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app.</p>
+      <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
+        <p class="small" data-en="Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app." data-zh="通过 IOKit 读取电池与电源数据，用 SQLite 保存历史，通过 App Group 向 WidgetKit 扩展传递快照。无需账号，无遥测。IOKit 读取层源自 MIT 许可的 PowerTop，已在 App 内注明。">Reads battery and power-source data through IOKit, keeps history in SQLite, and hands a snapshot to the WidgetKit extension through an App Group. No account, no telemetry. The IOKit reading layer is derived from the MIT-licensed PowerTop and credited in the app.</p>
+      </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li>AppKit</li><li>IOKit</li><li>WidgetKit</li><li>SQLite</li>
       </ul>
@@ -620,12 +659,15 @@ ol.shiplog time { white-space: nowrap; }
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" data-cat="menubar">
       <img class="shot-img" src="assets/glasswitch.jpg" alt="Glasswitch screenshot from the Mac App Store listing" data-alt-en="Glasswitch screenshot from the Mac App Store listing" data-alt-zh="Glasswitch 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <span class="cat" data-en="Menu bar" data-zh="菜单栏工具">Menu bar</span>
       <h3>Glasswitch</h3>
       <div class="meta" data-en="v1.1 · macOS 26+ · paid" data-zh="v1.1 · macOS 26+ · 付费">v1.1 · macOS 26+ · paid</div>
       <p data-en="Shows your Mac&#x27;s default browser in the menu bar and switches the system HTTP / HTTPS handler to any installed browser. Stays in sync when the default is changed elsewhere." data-zh="在菜单栏显示 Mac 的默认浏览器，可将系统 HTTP / HTTPS 处理程序切换为任意已安装的浏览器。在其他地方更改默认浏览器后，也会保持同步。">Shows your Mac's default browser in the menu bar and switches the system HTTP / HTTPS handler to any installed browser. Stays in sync when the default is changed elsewhere.</p>
-      <p class="small"><span data-en="Built on the open-source" data-zh="基于开源项目">Built on the open-source</span> <a href="https://github.com/congbo/default-browser-switcher" rel="noopener">default-browser-switcher</a> <span data-en="(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site." data-zh="（MIT）。我负责的改动包括：macOS 26 Liquid Glass 界面、仅使用公开 NSWorkspace API 的沙盒版、中英双语界面、后台同步系统默认浏览器，以及 App Store 上架、官网与支持站点。">(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site.</span></p>
+      <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
+        <p class="small"><span data-en="Built on the open-source" data-zh="基于开源项目">Built on the open-source</span> <a href="https://github.com/congbo/default-browser-switcher" rel="noopener">default-browser-switcher</a> <span data-en="(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site." data-zh="（MIT）。我负责的改动包括：macOS 26 Liquid Glass 界面、仅使用公开 NSWorkspace API 的沙盒版、中英双语界面、后台同步系统默认浏览器，以及 App Store 上架、官网与支持站点。">(MIT). My changes: a macOS 26 Liquid Glass interface, a sandboxed Mac App Store variant that uses only the public NSWorkspace API, English / Simplified Chinese UI, background sync with the system default, and the App Store release, website and support site.</span></p>
+      </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li>AppKit</li><li>NSWorkspace</li><li>App Sandbox</li><li>SMAppService</li><li>Combine</li>
       </ul>
@@ -635,12 +677,15 @@ ol.shiplog time { white-space: nowrap; }
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" data-cat="dev">
       <img class="shot-img" src="assets/codex-viewer.jpg" alt="Codex Session Viewer screenshot from the Mac App Store listing" data-alt-en="Codex Session Viewer screenshot from the Mac App Store listing" data-alt-zh="Codex Session Viewer 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <span class="cat" data-en="Developer tools" data-zh="开发者工具">Developer tools</span>
       <h3>Codex Session Viewer</h3>
       <div class="meta" data-en="v1.0 · macOS 26+ · free" data-zh="v1.0 · macOS 26+ · 免费">v1.0 · macOS 26+ · free</div>
       <p data-en="Browses local Codex CLI session logs. Built in 2025, when Codex was CLI-only: it finds and parses the JSONL session archives, groups them by month and renders the full conversation timeline." data-zh="浏览本地 Codex CLI 会话日志。开发于 2025 年，当时 Codex 还只有 CLI：自动查找并解析 JSONL 会话文件，按月分组，呈现完整对话时间线。">Browses local Codex CLI session logs. Built in 2025, when Codex was CLI-only: it finds and parses the JSONL session archives, groups them by month and renders the full conversation timeline.</p>
-      <p class="small" data-en="Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public." data-zh="首次授权文件夹后保存 security-scoped bookmarks，无需重复授权。源码公开。">Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public.</p>
+      <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
+        <p class="small" data-en="Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public." data-zh="首次授权文件夹后保存 security-scoped bookmarks，无需重复授权。源码公开。">Asks for folder access once and keeps security-scoped bookmarks, so it does not prompt again. Source is public.</p>
+      </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li data-en="JSONL parsing" data-zh="JSONL parsing">JSONL parsing</li><li data-en="Security-scoped bookmarks" data-zh="Security-scoped bookmarks">Security-scoped bookmarks</li>
       </ul>
@@ -650,12 +695,15 @@ ol.shiplog time { white-space: nowrap; }
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" data-cat="dev">
       <img class="shot-img" src="assets/utc-time-looker.jpg" alt="UTC Time Looker screenshot from the Mac App Store listing" data-alt-en="UTC Time Looker screenshot from the Mac App Store listing" data-alt-zh="UTC Time Looker 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <span class="cat" data-en="Developer tools" data-zh="开发者工具">Developer tools</span>
       <h3>UTC Time Looker</h3>
       <div class="meta" data-en="v1.0 · macOS 15.5+ · paid" data-zh="v1.0 · macOS 15.5+ · 付费">v1.0 · macOS 15.5+ · paid</div>
       <p data-en="Converts UTC dates, ISO 8601 strings and Unix timestamps into local and other time zones as you type. I wrote it for reading UTC times in backend logs." data-zh="输入 UTC 日期、ISO 8601 字符串或 Unix 时间戳，即时转换为本地及其他时区时间。最初是为方便阅读后端日志里的 UTC 时间而写。">Converts UTC dates, ISO 8601 strings and Unix timestamps into local and other time zones as you type. I wrote it for reading UTC times in backend logs.</p>
-      <p class="small" data-en="SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT)." data-zh="SwiftUI 界面，Foundation 解析器。仓库包含解析、夏令时和 UTC 偏移的单元测试。以 MIT 许可开源。">SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT).</p>
+      <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
+        <p class="small" data-en="SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT)." data-zh="SwiftUI 界面，Foundation 解析器。仓库包含解析、夏令时和 UTC 偏移的单元测试。以 MIT 许可开源。">SwiftUI front end over a Foundation-based parser. The repo has unit tests for parsing, DST and UTC offsets. Open source (MIT).</p>
+      </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li>Foundation</li><li data-en="Unit tests" data-zh="Unit tests">Unit tests</li>
       </ul>
@@ -665,12 +713,15 @@ ol.shiplog time { white-space: nowrap; }
       </div>
     </article>
 
-    <article class="card">
+    <article class="card" data-cat="productivity">
       <img class="shot-img" src="assets/mindnotes.jpg" alt="MindNotes screenshot from the Mac App Store listing" data-alt-en="MindNotes screenshot from the Mac App Store listing" data-alt-zh="MindNotes 的 Mac App Store 截图" width="1280" height="800" loading="lazy">
+      <span class="cat" data-en="Productivity" data-zh="效率">Productivity</span>
       <h3>MindNotes</h3>
       <div class="meta" data-en="v1.0 · macOS 15+ · free · released Oct 2026" data-zh="v1.0 · macOS 15+ · 免费 · 2026 年 10 月上线">v1.0 · macOS 15+ · free · released Oct 2026</div>
       <p data-en="A floating quick-capture button for the Mac: open it, write a thought, save, and get back to work. Drafts are kept automatically; saved notes can be searched, edited and copied." data-zh="Mac 上的悬浮速记按钮：打开、记下想法、保存，继续工作。自动保留草稿，已保存的笔记支持搜索、编辑与复制。">A floating quick-capture button for the Mac: open it, write a thought, save, and get back to work. Drafts are kept automatically; saved notes can be searched, edited and copied.</p>
-      <p class="small" data-en="Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection." data-zh="笔记以纯 Markdown 文件保存在本地，可在 Finder 中查看。支持英文与简体中文、浅色 / 深色 / 跟随系统外观，以及可选的登录时启动。无需账号，不联网，不收集数据。">Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection.</p>
+      <details class="more"><summary data-en="How it&#x27;s built" data-zh="实现细节">How it&#x27;s built</summary>
+        <p class="small" data-en="Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection." data-zh="笔记以纯 Markdown 文件保存在本地，可在 Finder 中查看。支持英文与简体中文、浅色 / 深色 / 跟随系统外观，以及可选的登录时启动。无需账号，不联网，不收集数据。">Notes are stored as plain Markdown files on disk, viewable in Finder. English / Simplified Chinese, light / dark / system appearance, optional launch at login. No account, no network, no data collection.</p>
+      </details>
       <ul class="chips" aria-label="Technologies" data-aria-label-en="Technologies" data-aria-label-zh="技术栈">
         <li>SwiftUI</li><li>AppKit</li><li data-en="Markdown files" data-zh="Markdown 文件">Markdown files</li>
       </ul>
@@ -970,6 +1021,19 @@ ol.shiplog time { white-space: nowrap; }
   Object.keys(byId).forEach(function (id) {
     var el = document.getElementById(id);
     if (el) io.observe(el);
+  });
+})();
+
+// Filter the shipped-apps collection by category.
+(function () {
+  var buttons = document.querySelectorAll('.app-filter button');
+  var cards = document.querySelectorAll('.apps > .card');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-filter');
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      cards.forEach(function (c) { c.hidden = f !== 'all' && c.getAttribute('data-cat') !== f; });
+    });
   });
 })();
 </script>
