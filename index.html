@@ -629,10 +629,10 @@ nav.links a { white-space: nowrap; }
 <div class="topbar-inner">
 <nav class="links" aria-label="Sections" data-aria-label-en="Sections" data-aria-label-zh="页面导航">
   <a href="#apps" data-en="Shipped apps" data-zh="Shipped apps">Shipped apps</a>
-  <a href="#tooling" data-en="Tooling" data-zh="Tooling">Tooling</a>
   <a href="#client-work" data-en="Client work" data-zh="Client work">Client work</a>
   <a href="#writing" data-en="Writing" data-zh="Writing">Writing</a>
   <a href="#skills" data-en="Skills" data-zh="Skills">Skills</a>
+  <a href="#tooling" data-en="Tooling" data-zh="Tooling">Tooling</a>
   <a href="#shiplog" data-en="Ship log" data-zh="Ship log">Ship log</a>
   <a href="#contact" data-en="Contact" data-zh="联系我">Contact</a>
 </nav>
@@ -676,8 +676,8 @@ nav.links a { white-space: nowrap; }
       <span data-en="Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ." data-zh="交付过 3 个已上线的客户项目，技术栈涵盖 Next.js、Node.js、Prisma、PostgreSQL 与 Redis / BullMQ。">Three shipped client projects with Next.js, Node.js, Prisma, PostgreSQL and Redis / BullMQ.</span>
     </div>
     <div class="tooling-fact">
-      <b><a href="#tooling" data-en="4 agent tools" data-zh="4 个 Agent 工具">4 agent tools</a></b>
-      <span data-en="Open source, built on Claude Code and Codex: multi-agent job search, shared project memory, Claude-to-Codex delegation." data-zh="基于 Claude Code 与 Codex 构建的开源工具：涵盖多 Agent 协同求职、跨会话共享项目记忆、Claude 调度 Codex 任务执行。">Open source, built on Claude Code and Codex: multi-agent job search, shared project memory, Claude-to-Codex delegation.</span>
+      <b><a href="#writing" data-en="10+ write-ups" data-zh="10+ 篇技术复盘">10+ write-ups</a></b>
+      <span data-en="Production problems from client work: push at scale, Azure networking, load testing, iOS architecture." data-zh="来自客户项目的生产问题复盘：推送、Azure 网络排障、压测、iOS 架构。">Production problems from client work: push at scale, Azure networking, load testing, iOS architecture.</span>
     </div>
   </div>
 
@@ -696,7 +696,6 @@ nav.links a { white-space: nowrap; }
 </header>
 
 
-<!-- ======================= SHIPPED APPS ======================= -->
 <section id="apps">
   <h2 data-en="Shipped apps" data-zh="Shipped apps">Shipped apps</h2>
   <p class="section-note" data-en="Six Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). Five are live on the Mac App Store; Linger ships as a free, notarized download. Glasswitch and Voltyn build on open-source code, credited on their cards." data-zh="借助 AI 编程工具（Claude Code、Codex）独立开发并长期维护 6 款 Mac App。其中 5 款已上架 Mac App Store，Linger 以免费、已公证的安装包提供下载。Glasswitch 与 Voltyn 基于开源项目二次开发，已在各自卡片中注明开源出处。">Six Mac apps I build and maintain myself, using AI coding tools (Claude Code, Codex). Five are live on the Mac App Store; Linger ships as a free, notarized download. Glasswitch and Voltyn build on open-source code, credited on their cards.</p>
@@ -817,57 +816,6 @@ nav.links a { white-space: nowrap; }
       </div>
     </article>
 
-  </div>
-</section>
-
-<!-- ======================= CLIENT WORK ======================= -->
-<!-- ======================= AGENT TOOLING ======================= -->
-<section id="tooling">
-  <h2 data-en="Agent tooling" data-zh="Agent tooling">Agent tooling</h2>
-  <p class="section-note" data-en="Open-source tools from how I work with Claude Code and Codex every day." data-zh="日常深度使用 Claude Code 与 Codex 编程时沉淀出的一组开源工具。">Open-source tools from how I work with Claude Code and Codex every day.</p>
-  <div class="tooling">
-    <article class="card">
-      <h3><a href="https://github.com/LeiZiKang/job-agent-kit" data-en="job-agent-kit" data-zh="job-agent-kit">job-agent-kit</a></h3>
-      <span class="tool-language" data-en="HTML/Python" data-zh="HTML/Python">HTML/Python</span>
-      <p data-en="Agent workflow kit for a job search with Claude Code / Codex. You approve every outward action." data-zh="基于 Claude Code 与 Codex 的自动化求职 Agent 工作流工具包，所有对外操作均需人工二次确认。">Agent workflow kit for a job search with Claude Code / Codex. You approve every outward action.</p>
-      <ul class="tool-points">
-        <li data-en="Parallel scouting subagents with a manager review" data-zh="多个子 Agent 并行检索岗位，主 Agent 统一审核把关">Parallel scouting subagents with a manager review</li>
-        <li data-en="Tracker CLI and weekly review" data-zh="投递进度追踪 CLI 工具与每周复盘">Tracker CLI and weekly review</li>
-        <li data-en="Read-only patrols, human approval gates" data-zh="默认只读巡检模式，对外敏感操作需人工审批确认">Read-only patrols, human approval gates</li>
-      </ul>
-      <div class="actions"><a href="https://github.com/LeiZiKang/job-agent-kit" data-en="GitHub →" data-zh="GitHub →">GitHub →</a> <a href="https://leizikang.github.io/job-agent-kit/" data-en="Site →" data-zh="Site →">Site →</a></div>
-    </article>
-    <article class="card">
-      <h3><a href="https://github.com/LeiZiKang/agent-memory" data-en="agent-memory" data-zh="agent-memory">agent-memory</a></h3>
-      <span class="tool-language" data-en="Shell" data-zh="Shell">Shell</span>
-      <p data-en="Plain-file project memory shared by Claude Code and Codex." data-zh="基于纯文本文件实现的轻量项目记忆，供 Claude Code 与 Codex 跨会话共享。">Plain-file project memory shared by Claude Code and Codex.</p>
-      <ul class="tool-points">
-        <li data-en="About 25 lines of rules" data-zh="约 25 行规则">About 25 lines of rules</li>
-        <li data-en="Session-start hook" data-zh="会话启动 hook">Session-start hook</li>
-        <li data-en="Linter for bloat and stale state" data-zh="用于检测内容冗余与陈旧状态的 Linter">Linter for bloat and stale state</li>
-      </ul>
-      <div class="actions"><a href="https://github.com/LeiZiKang/agent-memory" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
-    </article>
-    <article class="card">
-      <h3><a href="https://github.com/LeiZiKang/codex-delegate" data-en="codex-delegate" data-zh="codex-delegate">codex-delegate</a></h3>
-      <span class="tool-language" data-en="Shell" data-zh="Shell">Shell</span>
-      <p data-en="Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds." data-zh="Claude Code Skill：由 Claude 负责需求拆解与把关验收，本地 Codex CLI 负责编码实现。">Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds.</p>
-      <ul class="tool-points">
-        <li data-en="Brief, build, review loop" data-zh="需求拆解 → 编码实现 → 检查验收 协作闭环">Brief, build, review loop</li>
-        <li data-en="Saves Claude usage" data-zh="节省 Claude 用量">Saves Claude usage</li>
-      </ul>
-      <div class="actions"><a href="https://github.com/LeiZiKang/codex-delegate" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
-    </article>
-    <article class="card">
-      <h3><a href="https://github.com/LeiZiKang/clawd-usage-weather" data-en="clawd-usage-weather" data-zh="clawd-usage-weather">clawd-usage-weather</a></h3>
-      <span class="tool-language" data-en="TypeScript" data-zh="TypeScript">TypeScript</span>
-      <p data-en="A hopping Clawd and a usage forecast above the Claude Code prompt." data-zh="在 Claude Code 终端提示符上方显示跳跃的 Clawd 动画与 Token 用量预估。">A hopping Clawd and a usage forecast above the Claude Code prompt.</p>
-      <ul class="tool-points">
-        <li data-en="Status-line extension" data-zh="状态栏扩展">Status-line extension</li>
-        <li data-en="Usage forecast from local data" data-zh="基于本地历史数据的用量预估">Usage forecast from local data</li>
-      </ul>
-      <div class="actions"><a href="https://github.com/LeiZiKang/clawd-usage-weather" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
-    </article>
   </div>
 </section>
 
@@ -1003,8 +951,6 @@ nav.links a { white-space: nowrap; }
   <p class="also" data-en="Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects." data-zh="期间亦参与了酒店业务询价与 CMS 平台的研发（Next.js、Express、Prisma），并为多个全栈项目搭建了基于 Cloudflare 和 GitHub Actions 的 CI/CD 自动化部署流水线。">Also contributed to a hospitality enquiry and CMS platform (Next.js, Express, Prisma), and built Cloudflare and GitHub Actions deployment pipelines for the full-stack projects.</p>
 </section>
 
-<!-- ======================= WRITING ======================= -->
-
 <section id="writing">
   <h2 data-en="Writing" data-zh="Writing">Writing</h2>
   <p class="section-note" data-en="Engineering notes from client work and my own projects." data-zh="来自客户项目与个人开发中的技术复盘与工程实践笔记。">Engineering notes from client work and my own projects.</p>
@@ -1062,7 +1008,7 @@ nav.links a { white-space: nowrap; }
   <p class="more-link"><a href="https://levi-blog.pages.dev/" rel="noopener" data-en="All posts on the blog →" data-zh="前往博客查看全部文章 →">All posts on the blog →</a></p>
 </section>
 
-<!-- ======================= SKILLS ======================= -->
+
 <section id="skills">
   <h2 data-en="Skills" data-zh="Skills">Skills</h2>
   <dl class="skills">
@@ -1083,8 +1029,34 @@ nav.links a { white-space: nowrap; }
   </dl>
 </section>
 
-<!-- ======================= CONTACT ======================= -->
-<!-- ======================= SHIP LOG ======================= -->
+<section id="tooling">
+  <h2 data-en="Agent tooling" data-zh="Agent tooling">Agent tooling</h2>
+  <p class="section-note" data-en="Open-source tools from how I work with Claude Code and Codex every day." data-zh="日常深度使用 Claude Code 与 Codex 编程时沉淀出的一组开源工具。">Open-source tools from how I work with Claude Code and Codex every day.</p>
+  <div class="tooling">
+        <article class="card">
+      <h3><a href="https://github.com/LeiZiKang/agent-memory" data-en="agent-memory" data-zh="agent-memory">agent-memory</a></h3>
+      <span class="tool-language" data-en="Shell" data-zh="Shell">Shell</span>
+      <p data-en="Plain-file project memory shared by Claude Code and Codex." data-zh="基于纯文本文件实现的轻量项目记忆，供 Claude Code 与 Codex 跨会话共享。">Plain-file project memory shared by Claude Code and Codex.</p>
+      <ul class="tool-points">
+        <li data-en="About 25 lines of rules" data-zh="约 25 行规则">About 25 lines of rules</li>
+        <li data-en="Session-start hook" data-zh="会话启动 hook">Session-start hook</li>
+        <li data-en="Linter for bloat and stale state" data-zh="用于检测内容冗余与陈旧状态的 Linter">Linter for bloat and stale state</li>
+      </ul>
+      <div class="actions"><a href="https://github.com/LeiZiKang/agent-memory" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
+    </article>
+    <article class="card">
+      <h3><a href="https://github.com/LeiZiKang/codex-delegate" data-en="codex-delegate" data-zh="codex-delegate">codex-delegate</a></h3>
+      <span class="tool-language" data-en="Shell" data-zh="Shell">Shell</span>
+      <p data-en="Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds." data-zh="Claude Code Skill：由 Claude 负责需求拆解与把关验收，本地 Codex CLI 负责编码实现。">Claude Code skill: Claude writes the brief and reviews, the local Codex CLI builds.</p>
+      <ul class="tool-points">
+        <li data-en="Brief, build, review loop" data-zh="需求拆解 → 编码实现 → 检查验收 协作闭环">Brief, build, review loop</li>
+        <li data-en="Saves Claude usage" data-zh="节省 Claude 用量">Saves Claude usage</li>
+      </ul>
+      <div class="actions"><a href="https://github.com/LeiZiKang/codex-delegate" data-en="GitHub →" data-zh="GitHub →">GitHub →</a></div>
+    </article>
+      </div>
+</section>
+
 <section id="shiplog">
   <h2 data-en="Ship log" data-zh="Ship log">Ship log</h2>
   <p class="section-note" data-en="Mac app launches, newest first." data-zh="Mac App 上线记录（最新在先）">Mac app launches, newest first.</p>
