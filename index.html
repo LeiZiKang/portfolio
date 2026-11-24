@@ -1009,6 +1009,11 @@ nav.links a { white-space: nowrap; }
   <h3 class="group-title" data-en="Backend / Infrastructure" data-zh="Backend / Infrastructure">Backend / Infrastructure</h3>
   <div class="posts">
   <article class="post">
+    <h3><a href="https://levi-blog.pages.dev/blog/49x-traffic-spike-connection-pool-en/" rel="noopener" data-en="A 49× Traffic Spike, 16.6% DB CPU, and an Exhausted Connection Pool" data-zh="49 倍突发流量、DB CPU 仅 16.6%：一次连接池打满的 5xx 排障复盘">A 49× Traffic Spike, 16.6% DB CPU, and an Exhausted Connection Pool</a></h3>
+    <div class="meta">PostgreSQL · Prisma · Node.js</div>
+    <p data-en="Traffic jumped from 188 to 9,267 req/min with 36 5xx alerts while DB CPU stayed at 16.6%—how an uncached maintenance check saturated the pool, and the same-day cache + 503 fix." data-zh="请求量 1 分钟从 188 飙到 9,267 次/分钟触发 36 次 5xx，数据库 CPU 却只有 16.6%——定位无缓存维护状态查询打满连接池，并当天落地缓存、请求合并与 503 过载保护。">Traffic jumped from 188 to 9,267 req/min with 36 5xx alerts while DB CPU stayed at 16.6%—how an uncached maintenance check saturated the pool, and the same-day cache + 503 fix.</p>
+  </article>
+  <article class="post">
     <h3><a href="https://levi-blog.pages.dev/blog/fcm-topic-push-en/" rel="noopener" data-en="Moving Member Push Notifications to FCM Topics: Groups, Languages and the Ones That Never Arrived" data-zh="会员推送迁移至 FCM Topics：用户分组、多语言分发与未送达排查">Moving Member Push Notifications to FCM Topics: Groups, Languages and the Ones That Never Arrived</a></h3>
     <div class="meta">Node.js · FCM</div>
     <p data-en="Moving a membership app&#x27;s push from per-token sends to FCM topics: fixed and one-time topics, language splits, and reconciling subscriptions." data-zh="记录会员 App 推送系统架构改造：从单 Token 逐条推送切换为 FCM Topics 主题订阅，解决固定/临时主题、语言划分及订阅状态对账等难点。">Moving a membership app's push from per-token sends to FCM topics: fixed and one-time topics, language splits, and reconciling subscriptions.</p>
