@@ -725,8 +725,8 @@ footer p { margin: 0; }
     <details class="editorial-more">
       <summary data-en="Ship log · launches, newest first (2025–2026)" data-zh="发布记录 · 按时间倒序（2025–2026）">Ship log · launches, newest first (2025–2026)</summary>
       <ol class="shiplog">
+        <li><time datetime="2026-11-26" data-en="Nov 26, 2026" data-zh="2026.11.26">Nov 26, 2026</time><div><b>Linger 1.0</b> <span data-en="— floating desktop lyrics with Metal aurora &amp; XDR HDR glow (public beta Nov 2, direct download)" data-zh="— 原生 Swift 6 + Metal 流光与 XDR HDR 桌面悬浮歌词（11 月 2 日公测，官网直装）">— floating desktop lyrics with Metal aurora &amp; XDR HDR glow (public beta Nov 2, direct download)</span></div></li>
         <li><time datetime="2026-11-26" data-en="Nov 26, 2026" data-zh="2026.11.26">Nov 26, 2026</time><div><b>MeetingRecorder Pro 2.0</b> <span data-en="— local dual-track macOS recorder built for Claude Code, Codex &amp; Gemini review (direct download)" data-zh="— 本地双轨 Mac 录屏与面试黑匣子，一键对接 Claude Code / Codex / Gemini 复盘（官网直装）">— local dual-track macOS recorder built for Claude Code, Codex &amp; Gemini review (direct download)</span></div></li>
-        <li><time datetime="2026-11-02" data-en="Nov 2, 2026" data-zh="2026.11.02">Nov 2, 2026</time><div><b>Linger 0.9.6</b> <span data-en="— free desktop lyrics, public beta (direct download)" data-zh="— 免费桌面歌词，公开测试版（官网直装）">— free desktop lyrics, public beta (direct download)</span></div></li>
         <li><time datetime="2026-10-15" data-en="Oct 15, 2026" data-zh="2026.10.15">Oct 15, 2026</time><div><b>MindNotes – Quick Capture 1.0</b> <span data-en="— floating quick-capture Markdown notes" data-zh="— 悬浮速记工具（本地 Markdown）">— floating quick-capture Markdown notes</span></div></li>
         <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026.09.11">Sep 11, 2026</time><div><b>Voltyn 2.0</b> <span data-en="— power and battery monitor with WidgetKit extension" data-zh="— 菜单栏功耗与电池监测，附桌面小组件">— power and battery monitor with WidgetKit extension</span></div></li>
         <li><time datetime="2026-09-11" data-en="Sep 11, 2026" data-zh="2026.09.11">Sep 11, 2026</time><div><b>Glasswitch</b> <span data-en="— default-browser switcher (v1.1 followed Sep 12)" data-zh="— 默认浏览器切换（9 月 12 日更新至 v1.1）">— default-browser switcher (v1.1 followed Sep 12)</span></div></li>
@@ -1174,28 +1174,30 @@ var APPS_DATA = [
     num: "02",
     name: { en: "Linger", zh: "Linger 余音" },
     cat: { en: "Menu bar", zh: "菜单栏工具" },
-    tag: { en: "Desktop synced lyrics · Swift 6 · Sparkle CI", zh: "桌面同步歌词 · Swift 6 · Sparkle 自动发版" },
+    tag: { en: "Floating desktop lyrics · Swift 6 · Metal + XDR HDR", zh: "桌面悬浮歌词 · Swift 6 · Metal 流光 + XDR HDR" },
     year: "2026",
-    meta: { en: "v0.9.6 public beta · macOS 14+ · Apple silicon & Intel · free", zh: "v0.9.6 公开测试版 · macOS 14+ · Apple 芯片与 Intel · 免费" },
+    meta: { en: "v1.0.2 · macOS 14+ · Apple Silicon & Intel · 14-day trial / $4.99 one-time", zh: "v1.0.2 · macOS 14+ · Apple 芯片与 Intel · 14 天试用 / $4.99 买断" },
     img: "assets/linger.jpg",
     alt: { en: "Linger floating lyrics window", zh: "Linger 悬浮歌词窗口" },
     desc: {
-      en: "Synced desktop lyrics for NetEase Cloud Music, Spotify and Apple Music. A floating lyrics window that adapts its palette from album art, with word-by-word highlighting and translations.",
-      zh: "支持网易云音乐、Spotify 与 Apple Music 的桌面同步歌词。悬浮窗口根据专辑封面自动取色，支持逐字高亮与歌词翻译。"
+      en: "Floating desktop lyrics companion for Apple Music, Spotify, and macOS Now Playing. Extracts live palettes from album art to drive a low-GPU Metal aurora backdrop, syllable-synced XDR HDR glow, and click-through window ergonomics.",
+      zh: "面向 Apple Music、Spotify 与 macOS 媒体播放器的原生悬浮桌面歌词。实时提取专辑封面主色驱动低功耗 Metal 流光背景、逐字 XDR HDR 发光高亮与鼠标穿透交互。"
     },
-    tech: ["Swift 6", "AppKit", "SwiftUI", "JXA", "Sparkle", "GitHub Actions"],
+    tech: ["Swift 6", "AppKit", "Metal", "XDR HDR", "Sparkle", "Ed25519", "Cloudflare Workers", "Stripe"],
     notes: {
       en: [
-        "Written in Swift 6 with strict concurrency. Spotify and Music are read over AppleScript; since macOS 15.4 blocks direct Now Playing reads for third-party apps, NetEase playback comes from a supervised resident JXA helper process with backoff restarts. Lyrics race LRCLIB and NetEase, first synced result wins.",
-        "Distributed outside the Mac App Store: Developer ID signing, notarization, Sparkle auto-updates, and a tag-triggered GitHub Actions release pipeline. Prototype to public beta in two weeks."
+        "Built in Swift 6 with strict concurrency (~2.6% CPU / GPU during active playback): custom Metal fragment shaders render album-art aurora gradients while an EDR-capable layer drives syllable-level XDR HDR highlights and pause-dissolve transitions without stealing focus.",
+        "Distributed directly outside the Mac App Store: Developer ID signing, Apple notarization, silent background Sparkle updates with an in-app What's New viewer, and a zero-fixed-cost Cloudflare Workers + D1 + Stripe license backend with 14-day self-service refunds."
       ],
       zh: [
-        "基于 Swift 6 启用严格并发检查。Spotify 与 Apple Music 通过 AppleScript 读取；针对 macOS 15.4 限制第三方读取「正在播放」，网易云音乐采用受监控的常驻 JXA 辅助进程并在异常时退避重启。歌词聚合 LRCLIB 与网易云源，以首个同步结果为准。",
-        "独立于 Mac App Store 分发：Developer ID 签名、公证、Sparkle 自动更新与基于 git tag 触发的 GitHub Actions 流水线。两周内完成从原型到公开测试版。"
+        "基于 Swift 6 严格并发构建（播放期 CPU/GPU 占用约 2.6%）：自定义 Metal 片段着色器实时渲染封面流光渐变，配合 EDR 图层实现逐字 XDR HDR 发光高亮、暂停溶解与全穿透不抢焦点交互。",
+        "独立于 Mac App Store 直装分发：Developer ID 签名与 Apple 公证、无弹窗后台静默 Sparkle 更新与内置 What's new 更新日志，搭配零固定成本的 Cloudflare Workers + D1 + Stripe 授权后端与 14 天自助全额退款。"
       ]
     },
     links: [
-      { label: { en: "Website & download ↗", zh: "官网与下载 ↗" }, href: "https://linger-lyrics.pages.dev/", primary: true }
+      { label: { en: "Website & 14-day trial ↗", zh: "官网与 14 天免费试用 ↗" }, href: "https://linger.levicraft.app/", primary: true },
+      { label: { en: "User Guide ↗", zh: "使用指南 ↗" }, href: "https://linger.levicraft.app/guide/" },
+      { label: { en: "Engineering post ↗", zh: "技术复盘 ↗" }, href: "https://levi-blog.pages.dev/blog/linger-macos-metal-hdr-lyrics-en/" }
     ]
   },
   {
